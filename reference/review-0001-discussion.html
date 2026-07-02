@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课程 0001 · 课后讨论与复习笔记</title>
+<style>
+  :root {
+    --bg: #fdfaf5; --text: #2c2416; --muted: #6b5e4a;
+    --accent: #8b4513; --border: #d4c5a9; --card-bg: #fffdf9;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+    background: var(--bg); color: var(--text);
+    max-width: 750px; margin: 0 auto; padding: 3rem 1.5rem; line-height: 1.9;
+  }
+  h1 { font-size:1.6rem; text-align:center; margin-bottom:0.3rem; letter-spacing:0.05em; }
+  .subtitle { text-align:center; color:var(--muted); margin-bottom:2.5rem; font-style:italic; }
+  h2 { font-size:1.15rem; color:var(--accent); border-left:4px solid var(--accent); padding-left:0.75rem; margin:2.5rem 0 1rem; }
+  h3 { font-size:1rem; color:var(--accent); margin:1.5rem 0 0.5rem; }
+
+  .qa-block { margin:1.5rem 0; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+  .qa-q {
+    background: var(--accent); color:#fff; padding:0.6rem 1rem;
+    font-weight:700; font-size:0.95rem;
+  }
+  .qa-body { padding:1rem; background:var(--card-bg); }
+  .qa-body .label {
+    display:inline-block; font-size:0.75rem; font-weight:700; padding:0.1rem 0.5rem;
+    border-radius:3px; margin-right:0.5rem; vertical-align:middle;
+  }
+  .label-student { background:#e8e0d5; color:#5c4a3a; }
+  .label-teacher { background:#fef9e7; color:#8b6914; border:1px solid #d4a017; }
+
+  .student-a { background:#f8f4ea; padding:0.75rem 1rem; border-radius:4px; margin:0.5rem 0; font-size:0.92rem; }
+  .teacher-a { padding:0.75rem 1rem; margin:0.5rem 0; font-size:0.92rem; }
+
+  table { width:100%; border-collapse:collapse; margin:0.75rem 0; font-size:0.88rem; }
+  th { background:var(--accent); color:#fff; padding:0.4rem 0.6rem; text-align:left; font-weight:600; }
+  td { padding:0.35rem 0.6rem; border-bottom:1px solid var(--border); }
+  tr:nth-child(even) td { background:var(--card-bg); }
+
+  .summary-box {
+    background:#fef9e7; border-left:4px solid #d4a017; padding:1rem 1.2rem;
+    margin:2rem 0; border-radius:0 6px 6px 0;
+  }
+  .summary-box h3 { margin:0 0 0.5rem; color:#8b6914; }
+
+  .nav { display:flex; justify-content:space-between; margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); font-size:0.9rem; }
+  .nav a { color:var(--accent); text-decoration:none; }
+  .footer { text-align:center; color:var(--muted); font-size:0.85rem; margin-top:2rem; }
+  @media print { body { padding:1rem; font-size:10pt; } .qa-block { break-inside:avoid; } }
+</style>
+</head>
+<body>
+
+<h1>课程 0001 · 课后讨论笔记</h1>
+<p class="subtitle">宏观行业穿透 — 思考题讨论记录</p>
+
+<p>本文件记录课后三道思考题的讨论过程：学生原始答案、教师批改、以及最终完善的知识框架。供后续复习和自我检测使用。</p>
+
+<!-- ============ Q1 ============ -->
+<h2>思考题一：溢价支撑</h2>
+
+<div class="qa-block">
+  <div class="qa-q">Q1. 牦牛肉占中国牛肉仅6%，价格却是普通牛肉1.9倍——这个溢价靠什么支撑？</div>
+  <div class="qa-body">
+
+    <p><span class="label label-student">学生回答</span></p>
+    <div class="student-a">
+      牦牛的数量少，比较珍贵；养殖条件更为苛刻。
+    </div>
+
+    <p style="margin-top:1rem;"><span class="label label-teacher">评分：7/10 — 抓住了供给侧，需补品质端和消费端</span></p>
+
+    <table>
+      <tr><th>维度</th><th>已覆盖</th><th>补充完善</th></tr>
+      <tr>
+        <td><strong>供给稀缺</strong></td>
+        <td>✅ 数量少、珍贵</td>
+        <td>全球 90% 在中国，出了青藏高原就没有，<strong>无法扩产</strong>——不是不想多养，是地理锁死了上限</td>
+      </tr>
+      <tr>
+        <td><strong>成本结构</strong></td>
+        <td>✅ 养殖条件苛刻</td>
+        <td>散养 5-8 年出栏、冬季掉膘 30-50%、牧区远离消费市场——<strong>慢、远、损耗大</strong></td>
+      </tr>
+      <tr>
+        <td><strong>品质差异</strong></td>
+        <td>❌ 未提及</td>
+        <td>蛋白 23% vs 黄牛 21%，脂肪 2% vs 2.7%，Omega-3 是 3 倍——<strong>溢价有营养成分数据支撑</strong></td>
+      </tr>
+      <tr>
+        <td><strong>消费趋势</strong></td>
+        <td>❌ 未提及</td>
+        <td>高蛋白低脂肪 + 天然有机 + 高原纯净叙事 = <strong>精准命中健康升级需求</strong></td>
+      </tr>
+    </table>
+
+    <div class="summary-box">
+      <h3>一句话记忆</h3>
+      <p>牦牛肉溢价 = <strong>稀缺（不能多养）+ 成本高（养得慢）+ 品质好（数据说话）+ 故事好（高原纯净）</strong></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ Q2 ============ -->
+<h2>思考题二：内地市场障碍</h2>
+
+<div class="qa-block">
+  <div class="qa-q">Q2. 牦牛肉为什么80%以上只在藏区消费，很难进入内地市场？</div>
+  <div class="qa-body">
+
+    <p><span class="label label-student">学生回答</span></p>
+    <div class="student-a">
+      因为牛肉的保鲜问题，其次是大众对于牦牛肉认知不够。
+    </div>
+
+    <p style="margin-top:1rem;"><span class="label label-teacher">评分：8/10 — 两个核心痛点都点到了，补一个经济层的</span></p>
+
+    <table>
+      <tr><th>障碍层</th><th>具体问题</th><th>已覆盖</th></tr>
+      <tr>
+        <td><strong>物理层</strong></td>
+        <td>屠宰季集中（9-11月）→ 全年 80% 时间只能卖冻肉；中国人偏好鲜肉 → <strong>供给节奏与消费偏好错配</strong>；冷链物流成本曾占售价一半</td>
+        <td>✅ 保鲜问题</td>
+      </tr>
+      <tr>
+        <td><strong>市场层</strong></td>
+        <td>消费者不知道牦牛肉和普通牛肉的区别 → 愿意付溢价的理由不成立 → 品牌无法建立</td>
+        <td>✅ 认知不够</td>
+      </tr>
+      <tr>
+        <td><strong>经济层</strong></td>
+        <td>大量牦牛肉在内地<strong>按普通牛肉价格销售</strong>——好东西当大路货处理，渠道利润不够，没人愿意推。没有独立品类就没有独立定价权</td>
+        <td>❌ 未提及</td>
+      </tr>
+    </table>
+
+    <div class="summary-box">
+      <h3>一句话记忆</h3>
+      <p>牦牛肉走不出高原 = <strong>保鲜难（物理）+ 认知低（市场）+ 没定价权（经济）</strong>——三层障碍叠加</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ Q3 ============ -->
+<h2>思考题三：进口保障措施的影响</h2>
+
+<div class="qa-block">
+  <div class="qa-q">Q3. 进口牛肉保障措施（2026-2029）能不能让牦牛肉获益？为什么？</div>
+  <div class="qa-body">
+
+    <p><span class="label label-student">学生回答</span></p>
+    <div class="student-a">
+      能；存在一定的替代效应，能让国内消费者将对国外牛肉的需求转移至牦牛肉上。
+    </div>
+
+    <p style="margin-top:1rem;"><span class="label label-teacher">评分：7/10 — 方向正确，但要拿满分需要说清「能获益，但有条件」</span></p>
+
+    <table>
+      <tr><th>层面</th><th>分析</th></tr>
+      <tr>
+        <td><strong>为什么能获益</strong></td>
+        <td>保障措施 = 260 万吨进口配额 + 超出部分加征 <strong>55% 关税</strong>；进口牛肉变贵 → 与牦牛肉的价差缩小 → 国产特色牛肉相对竞争力上升；3 年窗口期，足够品牌和渠道做一次完整布局</td>
+      </tr>
+      <tr>
+        <td><strong>条件一：品类认知</strong></td>
+        <td>消费者知不知道牦牛肉？认知度极低。进口牛肉贵了，消费者可能选国产黄牛，<strong>跳过牦牛肉</strong></td>
+      </tr>
+      <tr>
+        <td><strong>条件二：供给能力</strong></td>
+        <td>出栏率仅 15%。想替代但没货，需求来了<strong>接不住</strong></td>
+      </tr>
+      <tr>
+        <td><strong>条件三：渠道准备</strong></td>
+        <td>电商刚起步（31%），线下几乎空白。3 年内需加速铺渠道、做品类教育</td>
+      </tr>
+    </table>
+
+    <div class="summary-box">
+      <h3>一句话记忆</h3>
+      <p>保障措施把<strong>门</strong>打开了，但牦牛肉能不能走出去，还得看自己<strong>腿</strong>够不够硬——认知、产能、渠道，一个不能少</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ KEY TAKEAWAYS ============ -->
+<h2>本节核心框架回顾</h2>
+
+<div class="summary-box">
+  <h3>四层穿透速记</h3>
+  <table>
+    <tr><td>🥩 肉类总产量</td><td><strong>10,072 万吨</strong>（2025，首破亿吨）</td></tr>
+    <tr><td>🐂 牛肉产量</td><td><strong>801 万吨</strong>（占比 8%）</td></tr>
+    <tr><td>🐃 牦牛肉产量</td><td><strong>48.7 万吨</strong>（占牛肉 ~6%）</td></tr>
+    <tr><td>💰 牦牛肉零售价</td><td><strong>~130 元/kg</strong>（普通牛肉 ~69 元/kg）</td></tr>
+    <tr><td>🏔️ 核心产区</td><td><strong>青海 36% > 西藏 23% > 四川 23% > 甘肃 8%</strong></td></tr>
+  </table>
+</div>
+
+<div class="summary-box">
+  <h3>三个关键判断</h3>
+  <ol>
+    <li>牦牛肉是<strong>小而美的中国独有品类</strong>——6% 的份额，1.9 倍的溢价</li>
+    <li>溢价靠四个支撑点：<strong>稀缺 × 成本 × 品质 × 趋势</strong></li>
+    <li>增长瓶颈不在需求端，在<strong>供给端（产能）和流通端（品牌+渠道）</strong></li>
+  </ol>
+</div>
+
+<hr>
+<div class="nav">
+  <a href="../lessons/0001-macro-industry-overview.html">← 返回课程 0001</a>
+  <a href="../lessons/0002-supply-chain.html">下一课：供应链拆解 →</a>
+</div>
+<div class="footer">牦牛肉品类学习 · 课后复习笔记 · 0001</div>
+
+</body>
+</html>

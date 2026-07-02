@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课程 0003 · 牦牛肉市场格局与竞争分析</title>
+<style>
+  :root {
+    --bg: #fdfaf5; --text: #2c2416; --muted: #6b5e4a;
+    --accent: #8b4513; --border: #d4c5a9; --card-bg: #fffdf9;
+    --correct: #2e7d32; --wrong: #c62828;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+    background: var(--bg); color: var(--text);
+    max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem; line-height: 1.9;
+  }
+  h1 { font-size:1.8rem; text-align:center; margin-bottom:0.25rem; letter-spacing:0.05em; }
+  h1 small { font-size:1rem; color:var(--muted); display:block; margin-top:0.3rem; }
+  h2 { font-size:1.2rem; color:var(--accent); border-left:4px solid var(--accent); padding-left:0.75rem; margin:2.5rem 0 1rem; }
+  h3 { font-size:1rem; color:var(--accent); margin:1.5rem 0 0.5rem; }
+  p, li { margin-bottom:0.6rem; }
+  blockquote {
+    background: var(--card-bg); border-left:3px solid var(--accent);
+    margin:1rem 0; padding:0.75rem 1rem; font-style:italic; color:var(--muted);
+  }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.9rem; }
+  th { background: var(--accent); color:#fff; padding:0.5rem; text-align:left; }
+  td { padding:0.45rem 0.75rem; border-bottom:1px solid var(--border); }
+  tr:nth-child(even) td { background:var(--card-bg); }
+
+  .quiz { background:#f8f4ea; border:2px solid #c9b896; border-radius:8px; padding:1.25rem; margin:2rem 0; }
+  .quiz h3 { margin-top:0; }
+  .quiz .q { margin:1rem 0; }
+  .quiz .q p { font-weight:600; margin-bottom:0.5rem; }
+  .quiz input[type="text"] {
+    width:100%; padding:0.5rem; border:1px solid var(--border); border-radius:4px;
+    font-size:0.95rem; font-family:inherit;
+  }
+  .quiz button {
+    margin-top:0.5rem; padding:0.4rem 1.2rem; background:var(--accent); color:#fff;
+    border:none; border-radius:4px; cursor:pointer; font-size:0.9rem;
+  }
+  .feedback { margin-top:0.5rem; font-weight:700; min-height:1.5rem; }
+  .feedback.correct { color:var(--correct); }
+  .feedback.wrong { color:var(--wrong); }
+
+  .callout { background:#fef9e7; border-left:4px solid #d4a017; padding:0.75rem 1rem; margin:1.5rem 0; border-radius:0 4px 4px 0; }
+  .source { font-size:0.82rem; color:var(--muted); margin-top:0.3rem; }
+  .source a { color:var(--accent); }
+  .nav { display:flex; justify-content:space-between; margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); font-size:0.9rem; }
+  .nav a { color:var(--accent); text-decoration:none; }
+  .swot { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin:1.5rem 0; }
+  .swot-item { border:1px solid var(--border); border-radius:6px; padding:0.75rem 1rem; }
+  .swot-item h4 { margin:0 0 0.5rem; font-size:0.95rem; }
+  .swot-item.s { border-top:4px solid #2e7d32; } .swot-item.s h4 { color:#2e7d32; }
+  .swot-item.w { border-top:4px solid #c62828; } .swot-item.w h4 { color:#c62828; }
+  .swot-item.o { border-top:4px solid #1565c0; } .swot-item.o h4 { color:#1565c0; }
+  .swot-item.t { border-top:4px solid #e65100; } .swot-item.t h4 { color:#e65100; }
+  .swot-item ul { margin:0; padding-left:1.2rem; font-size:0.88rem; }
+  .swot-item li { margin-bottom:0.25rem; }
+  @media (max-width:600px) { .swot { grid-template-columns:1fr; } }
+  @media print { body { padding:1rem; } }
+</style>
+</head>
+<body>
+
+<h1>课程 0003<br><small>牦牛肉市场格局、竞争与未来趋势</small></h1>
+
+<p style="text-align:center; color:var(--muted); margin-bottom:2rem;">
+  分析竞争格局、品牌层级、渠道变革和产业趋势，建立对行业未来的判断力
+</p>
+
+<blockquote>
+  <strong>🎯 本课目标：</strong>完成本课后，你将能说出牦牛肉行业的主要竞争者、品牌格局、渠道演变趋势，并能用SWOT框架分析这个品类的战略位置。
+</blockquote>
+
+<h2>一、竞争格局：分散走向集中</h2>
+
+<p>牦牛肉行业目前处于<b>从极度分散向初步集中过渡</b>的阶段。前五大企业市场份额合计约<strong>38.7%</strong>（2024），预计2030年将提升至52%以上，行业集中度正在加速提升。</p>
+
+<div class="callout">
+<strong>🆕 2025-2026年关键变化：</strong>
+<ul style="margin:0.5rem 0 0 1.2rem;">
+  <li>进口牛肉保障措施 (2026.1.1生效)：260万吨配额+55%额外关税 → 为国产牦牛肉创造3年保护窗口</li>
+  <li>新华·青海牦牛价格指数 (2026.6.23发布)：产业定价话语权提升的标志性事件</li>
+  <li>牦牛舍饲雪花牛肉技术突破：将显著提升高端产品供给能力</li>
+</ul>
+</div>
+
+<h3>主要企业梯队</h3>
+
+<table>
+  <tr><th>梯队</th><th>代表企业</th><th>特征</th></tr>
+  <tr>
+    <td>🥇 第一梯队<br><small>全国性龙头企业</small></td>
+    <td>
+      · 青海可可西里（年产能~10,000吨，国家级龙头）<br>
+      · 安多集团（甘肃，全产业链）<br>
+      · 西藏高原之宝（乳业为主，国家级龙头）
+    </td>
+    <td>品牌知名度高、渠道覆盖广、有精深加工能力</td>
+  </tr>
+  <tr>
+    <td>🥈 第二梯队<br><small>区域性龙头企业</small></td>
+    <td>
+      · 四川长青春科尔集团<br>
+      · 西藏阳光庄园农牧资源<br>
+      · 四川郎卡食品<br>
+      · 西藏娘亚牦牛养殖<br>
+      · 甘肃清源公司
+    </td>
+    <td>在省内有较强影响力，正在向外拓展</td>
+  </tr>
+  <tr>
+    <td>🥉 第三梯队<br><small>地方加工厂/合作社</small></td>
+    <td>各地州县级的小型屠宰场、加工厂、合作社</td>
+    <td>产能小、品牌弱、以本地市场为主</td>
+  </tr>
+</table>
+
+<div class="source">
+来源：<a href="http://www.qinghai.gov.cn/zwgk/system/2024/04/25/030042532.shtml">青海省政府</a>、
+<a href="https://www.xizang.gov.cn/xwzx_406/qxxw/202601/t20260106_517713.html">西藏自治区政府</a>、
+豆丁网行业报告(2025)
+</div>
+
+<h3>关键竞争维度对比</h3>
+
+<table>
+  <tr><th>维度</th><th>可可西里</th><th>安多集团</th><th>区域中小企业</th></tr>
+  <tr><td>品牌力</td><td>★★★★★ 全国驰名商标</td><td>★★★★ 区域强品牌</td><td>★★ 本地品牌</td></tr>
+  <tr><td>加工深度</td><td>★★★★★ 精深加工领先</td><td>★★★★ 全品类覆盖</td><td>★★ 初级加工为主</td></tr>
+  <tr><td>渠道覆盖</td><td>★★★★ 全国线上线下</td><td>★★★★ 线下餐饮+门店</td><td>★★ 本地批发</td></tr>
+  <tr><td>产能规模</td><td>★★★★★ 10,000吨/年</td><td>★★★★ 中等规模</td><td>★★ 小产能</td></tr>
+  <tr><td>产品创新</td><td>★★★★★ 国家级研发中心</td><td>★★★★ 产学研合作</td><td>★★ 跟随者</td></tr>
+</table>
+
+<h2>二、品牌格局分析</h2>
+
+<h3>品牌层级</h3>
+<table>
+  <tr><th>层级</th><th>类型</th><th>代表</th><th>作用</th></tr>
+  <tr><td>区域公用品牌</td><td>政府/协会背书</td><td>「青海牦牛」「亚克甘孜」「净土」</td><td>提供产地信任，降低消费者决策成本</td></tr>
+  <tr><td>企业品牌</td><td>企业自建</td><td>「可可西里」「安多」「高原之宝」</td><td>承载品质承诺，实现差异化</td></tr>
+  <tr><td>地理标志</td><td>国家认证</td><td>「麦洼牦牛」「当雄牦牛」「九龙牦牛」</td><td>锁定产地稀缺性，防止假冒</td></tr>
+</table>
+
+<h3>青海模式：「牦牛之都」品牌战略</h3>
+
+<p>青海省是品牌打造最成功的产区。核心策略：</p>
+<ol>
+  <li><strong>品种基础：</strong>拥有全国最多的牦牛品种（4个地方品种+2个培育品种），存栏~650万头</li>
+  <li><strong>科技支撑：</strong>国家牦牛肉加工技术研发专业中心（可可西里+青海大学联合）</li>
+  <li><strong>品牌输出：</strong>「可可西里」驰名商标，连续多年行业销售额领先</li>
+  <li><strong>产业集群：</strong>140+牦牛肉品牌，20+龙头加工企业</li>
+  <li><strong>渠道突破：</strong>2025年大通牦牛肉入驻麦德龙，标志着进入高端商超</li>
+</ol>
+
+<div class="callout">
+<strong>🔑 品牌化是核心命题：</strong>当前最大的问题是——大量牦牛肉仍按<b>普通牛肉</b>价格在内地销售。品牌化的本质是让消费者「识别并愿意为差异化价值付费」。青海用20年证明了这条路可行，其他产区正在追赶。
+</div>
+
+<h2>三、渠道变革：电商是最大变量</h2>
+
+<table>
+  <tr><th>渠道</th><th>2020占比</th><th>2024占比</th><th>变化趋势</th></tr>
+  <tr><td>藏区自消费</td><td>~80%+</td><td>~80%</td><td>基本稳定</td></tr>
+  <tr><td>传统农贸/商超</td><td>~82%</td><td>~69%</td><td>↓ 下降</td></tr>
+  <tr><td>电商（天猫/京东/抖音）</td><td>18%</td><td>31%</td><td>↑↑ 暴增，销售额34.7亿</td></tr>
+</table>
+
+<p><strong>电商崛起的三大驱动力：</strong></p>
+<ol>
+  <li><strong>直播电商：</strong>抖音/快手直播间直接展示高原牧场→消费者对「源头好货」的信任度大幅提升</li>
+  <li><strong>冷链物流改善：</strong>顺丰冷链等基础设施下沉到藏区，运输成本下降、时效提升</li>
+  <li><strong>拼多多等性价比平台：</strong>让牦牛肉从「特产礼品」变成「日常消费品」，扩大用户基数</li>
+</ol>
+
+<div class="source">
+案例：<a href="https://finance.sina.com.cn/jjxw/2025-01-27/doc-inehkprc9546490.shtml">临夏清源公司在拼多多开设旗舰店 (2024)</a>；
+<a href="http://www.qhnews.com/newscenter/system/2025/11/23/030481177.shtml">甘德体验店月营收100万元，电商日销1万+</a>
+</div>
+
+<h2>四、SWOT 分析</h2>
+
+<div class="swot">
+  <div class="swot-item s">
+    <h4>S 优势 (Strengths)</h4>
+    <ul>
+      <li>全球独一无二的物种资源，中国占90%+</li>
+      <li>天然放养，有机/绿色认证潜力巨大</li>
+      <li>高蛋白低脂肪，符合健康消费趋势</li>
+      <li>与藏族文化深度绑定，有故事可讲</li>
+    </ul>
+  </div>
+  <div class="swot-item w">
+    <h4>W 劣势 (Weaknesses)</h4>
+    <ul>
+      <li>出栏率极低(~15%)，生产效率低下</li>
+      <li>季节性强，冷链依赖度高</li>
+      <li>远离消费市场，物流成本高</li>
+      <li>加工水平低，产品同质化严重</li>
+      <li>品牌建设落后，消费者认知度低</li>
+    </ul>
+  </div>
+  <div class="swot-item o">
+    <h4>O 机会 (Opportunities)</h4>
+    <ul>
+      <li>消费升级→对高品质/健康肉类需求增长</li>
+      <li>进口牛肉保障措施(2026-2029)为国产腾空间</li>
+      <li>电商+冷链下沉让牦牛肉直达全国消费者</li>
+      <li>抖音等新媒体让「高原故事」低成本传播</li>
+      <li>政策扶持：乡村振兴、产业集群建设</li>
+    </ul>
+  </div>
+  <div class="swot-item t">
+    <h4>T 威胁 (Threats)</h4>
+    <ul>
+      <li>草场退化→生态保护限畜vs产业扩张的矛盾</li>
+      <li>普通牛肉价格下行→削弱牦牛肉溢价</li>
+      <li>跨界竞争：大健康企业进入牦牛保健品赛道</li>
+      <li>年轻一代牧民不愿从事养殖→劳动力断层</li>
+      <li>气候变化对高原生态系统的长期影响</li>
+    </ul>
+  </div>
+</div>
+
+<h2>五、未来趋势判断</h2>
+
+<ol>
+  <li><strong>集中度持续提升：</strong>前五大从38.7%→目标52%（2030），龙头通过品牌+渠道+资本优势挤压小企业</li>
+  <li><strong>进口保护窗口期：</strong>2026-2029年3年保障措施（260万吨配额+55%关税）是牦牛肉品类的历史性机遇——进口牛肉价格上涨将缩小牦牛肉的「溢价差距」，提升竞争力</li>
+  <li><strong>精深加工+高端化双轮驱动：</strong>从38%→43%+；牦牛雪花牛肉、骨胶原肽保健品等新品将重塑利润结构</li>
+  <li><strong>数字化+价格指数：</strong>新华·青海牦牛价格指数(2026.6发布)提升定价话语权；智能耳标+区块链溯源+智慧牧场成为品牌信任底座</li>
+  <li><strong>渠道融合：</strong>「线下体验店+线上直播+冷链到家」的全域零售模式将成为标配</li>
+  <li><strong>品类教育是关键：</strong>谁能率先完成消费者对「牦牛肉 ≠ 普通牛肉」的认知教育，谁就能获得品类红利</li>
+  <li><strong>生态约束倒逼效率革命：</strong>草畜平衡是硬约束，养殖模式必须从「数量型」转向「质量效益型」；牛存栏下降(-4.4%)将加速这一转型</li>
+</ol>
+
+<h2>📖 推荐深度阅读</h2>
+<ul>
+  <li><a href="http://www.qinghai.gov.cn/zwgk/system/2024/04/25/030042532.shtml" target="_blank">《“青海牦牛”品牌何以叫响全国？》— 青海省政府</a></li>
+  <li><a href="https://www.news.cn/fortune/20251231/d3392dd7392d4c27aef5a45e81da0564/c.html" target="_blank">《我国对进口牛肉实施保障措施》— 新华网</a></li>
+  <li><a href="https://www.xupunews.cn/content/646040/91/15986680.html" target="_blank">《2026牛羊肉十大品牌竞争格局》</a></li>
+</ul>
+
+<h2>🧠 检索练习</h2>
+
+<div class="quiz">
+  <h3>测验 3：市场格局</h3>
+
+  <div class="q">
+    <p>Q1. 前五大牦牛肉企业市场份额合计约多少？</p>
+    <input type="text" id="a1" placeholder="输入百分比...">
+    <br><button onclick="check1()">检查</button>
+    <div class="feedback" id="f1"></div>
+  </div>
+
+  <div class="q">
+    <p>Q2. 中国第一个入驻麦德龙的牦牛肉品牌来自哪个省？</p>
+    <input type="text" id="a2" placeholder="输入省份...">
+    <br><button onclick="check2()">检查</button>
+    <div class="feedback" id="f2"></div>
+  </div>
+
+  <div class="q">
+    <p>Q3. 电商渠道在牦牛肉销售中的占比从2020年的18%增长到2024年的多少？</p>
+    <input type="text" id="a3" placeholder="输入百分比...">
+    <br><button onclick="check3()">检查</button>
+    <div class="feedback" id="f3"></div>
+  </div>
+
+  <div class="q">
+    <p>Q4. 牦牛产业SWOT中，最大的「威胁(T)」是什么？（说出一个即可）</p>
+    <input type="text" id="a4" placeholder="输入你的答案...">
+    <br><button onclick="check4()">检查</button>
+    <div class="feedback" id="f4"></div>
+  </div>
+</div>
+
+<script>
+function show(id, correct, ua) {
+  const el = document.getElementById(id);
+  const ok = ua.trim().toLowerCase() === correct.toLowerCase();
+  el.textContent = ok ? '✅ 正确！' : `❌ 参考答案：${correct}`;
+  el.className = 'feedback ' + (ok ? 'correct' : 'wrong');
+}
+function check1() { show('f1', '38.7%', document.getElementById('a1').value); }
+function check2() { show('f2', '青海', document.getElementById('a2').value); }
+function check3() { show('f3', '31%', document.getElementById('a3').value); }
+function check4() {
+  const a = document.getElementById('a4').value.toLowerCase();
+  const ok = a.includes('草场') || a.includes('生态') || a.includes('牛肉价格') || a.includes('跨界') || a.includes('断层') || a.includes('气候');
+  const el = document.getElementById('f4');
+  el.textContent = ok ? '✅ 合理！（草场退化/普通牛肉降价/跨界竞争/劳动力断层/气候变化 均可）' : '✅ 已记录你的答案。参考答案：草场退化或普通牛肉价格下行';
+  el.className = 'feedback correct';
+}
+</script>
+
+<h2 style="margin-top:2rem;">🏆 课程体系回顾</h2>
+
+<p>完成全部三门课程后，你应该已经掌握了：</p>
+<ol>
+  <li><strong>宏观穿透：</strong>生鲜(5万亿+) → 肉类(10,072万吨, 2025首破亿吨) → 牛肉(801万吨, ~8,000亿) → 牦牛肉(48.7万吨, ~63亿) 的四层结构</li>
+  <li><strong>供应链地图：</strong>养殖(牧户/合作社) → 流通(牛贩子) → 屠宰加工(初加工/精深加工) → 销售(藏区+电商+商超+餐饮) 的完整链条</li>
+  <li><strong>竞争格局：</strong>从分散走向集中，电商重塑渠道，品牌化是核心命题</li>
+</ol>
+
+<p>接下来，请阅读<b>综合分析报告</b>（见 <code>../analysis-report.html</code>），它将整合所有知识点，形成完整的行业认知框架。</p>
+
+<hr>
+<p style="text-align:center; color:var(--muted); font-size:0.9rem;">
+  💬 有任何不理解的地方？<strong>直接问我</strong>——我是你的老师，可以帮你梳理任何不清楚的概念。
+</p>
+
+<div class="nav">
+  <a href="./0002-supply-chain.html">← 上一课：供应链拆解</a>
+  <a href="../analysis-report.html">📊 综合分析报告 →</a>
+</div>
+
+</body>
+</html>

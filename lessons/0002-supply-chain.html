@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课程 0002 · 牦牛肉供应链：从草原到餐桌</title>
+<style>
+  :root {
+    --bg: #fdfaf5; --text: #2c2416; --muted: #6b5e4a;
+    --accent: #8b4513; --border: #d4c5a9; --card-bg: #fffdf9;
+    --correct: #2e7d32; --wrong: #c62828;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+    background: var(--bg); color: var(--text);
+    max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;
+    line-height: 1.9;
+  }
+  h1 { font-size:1.8rem; text-align:center; margin-bottom:0.25rem; letter-spacing:0.05em; }
+  h1 small { font-size:1rem; color:var(--muted); display:block; margin-top:0.3rem; }
+  h2 { font-size:1.2rem; color:var(--accent); border-left:4px solid var(--accent); padding-left:0.75rem; margin:2.5rem 0 1rem; }
+  h3 { font-size:1rem; color:var(--accent); margin:1.5rem 0 0.5rem; }
+  p, li { margin-bottom:0.6rem; }
+  blockquote {
+    background: var(--card-bg); border-left:3px solid var(--accent);
+    margin:1rem 0; padding:0.75rem 1rem; font-style:italic; color:var(--muted);
+  }
+
+  .chain { margin:1.5rem 0; }
+  .chain-node {
+    border:2px solid var(--accent); border-radius:8px; padding:1rem 1.2rem;
+    margin-bottom:0.75rem; background:var(--card-bg);
+  }
+  .chain-node h3 { margin:0 0 0.4rem; color:var(--accent); }
+  .chain-node .tag {
+    display:inline-block; background:var(--accent); color:#fff;
+    font-size:0.75rem; padding:0.15rem 0.5rem; border-radius:3px; margin-right:0.3rem;
+  }
+  .chain-arrow { text-align:center; font-size:1.5rem; color:var(--accent); margin:0.25rem 0; }
+  .chain-node table { width:100%; border-collapse:collapse; font-size:0.88rem; margin-top:0.5rem; }
+  .chain-node td { padding:0.25rem 0.5rem; border-bottom:1px solid var(--border); }
+  .chain-node td:first-child { font-weight:600; width:30%; color:var(--accent); }
+
+  .pain-point {
+    background:#fff0f0; border-left:4px solid #c62828; padding:0.75rem 1rem;
+    margin:0.75rem 0; border-radius:0 4px 4px 0; font-size:0.9rem;
+  }
+  .pain-point strong { color:#c62828; }
+
+  .quiz { background:#f8f4ea; border:2px solid #c9b896; border-radius:8px; padding:1.25rem; margin:2rem 0; }
+  .quiz h3 { margin-top:0; }
+  .quiz .q { margin:1rem 0; }
+  .quiz .q p { font-weight:600; margin-bottom:0.5rem; }
+  .quiz select, .quiz input[type="text"] {
+    width:100%; padding:0.5rem; border:1px solid var(--border); border-radius:4px;
+    font-size:0.95rem; font-family:inherit;
+  }
+  .quiz button {
+    margin-top:0.5rem; padding:0.4rem 1.2rem; background:var(--accent); color:#fff;
+    border:none; border-radius:4px; cursor:pointer; font-size:0.9rem;
+  }
+  .feedback { margin-top:0.5rem; font-weight:700; min-height:1.5rem; }
+  .feedback.correct { color:var(--correct); }
+  .feedback.wrong { color:var(--wrong); }
+
+  .callout { background:#fef9e7; border-left:4px solid #d4a017; padding:0.75rem 1rem; margin:1.5rem 0; border-radius:0 4px 4px 0; }
+  .source { font-size:0.82rem; color:var(--muted); margin-top:0.3rem; }
+  .source a { color:var(--accent); }
+  .nav { display:flex; justify-content:space-between; margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); font-size:0.9rem; }
+  .nav a { color:var(--accent); text-decoration:none; }
+  @media print { body { padding:1rem; } .chain-node { break-inside:avoid; } }
+</style>
+</head>
+<body>
+
+<h1>课程 0002<br><small>牦牛肉供应链：从草原到餐桌</small></h1>
+
+<p style="text-align:center; color:var(--muted); margin-bottom:2rem;">
+  逐环节拆解「养殖 → 加工 → 销售」全链条，看懂价值如何产生、在哪里流失
+</p>
+
+<blockquote>
+  <strong>🎯 本课目标：</strong>完成本课后，你将能凭记忆画出牦牛产业的完整供应链地图，标注每个环节的关键参与者、成本收益结构和核心痛点。
+</blockquote>
+
+<h2>全景供应链地图</h2>
+
+<pre style="background:var(--card-bg); padding:1rem; border:1px solid var(--border); border-radius:6px; font-size:0.82rem; line-height:1.8; overflow-x:auto;">
+┌──────────────────────────────────────────────────────────────────┐
+│  【养殖端】            【加工端】           【销售端】             │
+│                                                                    │
+│  牧户/家庭牧场 ──→ 牛贩子(中间商) ──→ 屠宰企业 ──→ 批发/零售     │
+│       │                  │                │            │          │
+│       ↓                  │                ↓            ↓          │
+│  合作社/养殖基地 ────→  ─┘          精深加工企业   农贸市场       │
+│       │                               │    │        商超          │
+│       ↓                               │    │        电商          │
+│  饲草料/疫苗/兽药                    │    │        餐饮          │
+│  (上游供应商)                         │    │                      │
+│                                       ↓    ↓                      │
+│                                  副产品加工(骨/血/皮/毛/绒)        │
+└──────────────────────────────────────────────────────────────────┘
+</pre>
+
+<h2>环节一：养殖端 🐃</h2>
+
+<div class="chain">
+<div class="chain-node">
+  <h3><span class="tag">1</span> 上游投入品</h3>
+  <table>
+    <tr><td>核心要素</td><td>天然草场（依赖自然降水）、人工饲草基地、青贮玉米</td></tr>
+    <tr><td>辅助要素</td><td>疫苗兽药、暖棚设施、种公牛/冻精</td></tr>
+    <tr><td>草场特点</td><td>青藏高原高寒草甸，生长期短（5-9月），冬季枯草期长达7个月</td></tr>
+    <tr><td>核心矛盾</td><td>草畜平衡——超载放牧导致草场退化，国家限畜禁牧 vs 牧民增收需求</td></tr>
+  </table>
+</div>
+
+<div class="chain-arrow">↓</div>
+
+<div class="chain-node">
+  <h3><span class="tag">2</span> 繁育与养殖</h3>
+  <table>
+    <tr><td>养殖主体</td><td>牧户（家庭牧场）、合作社、规模化养殖基地</td></tr>
+    <tr><td>传统模式</td><td>全放牧、无补饲、靠天养牛 — 出栏周期5-8年</td></tr>
+    <tr><td>现代模式</td><td>「夏秋放牧+冬春补饲」、「牧繁农育」— 出栏周期缩短至2-3年</td></tr>
+    <tr><td>🆕 2025突破</td><td><strong>牦牛舍饲可生产雪花牛肉</strong>；无角牦牛「阿什旦」品种推广；母牦牛高效繁殖饲养技术推广</td></tr>
+    <tr><td>品种</td><td>九龙牦牛、麦洼牦牛、大通牦牛(改良)、西藏高山牦牛等</td></tr>
+    <tr><td>母牛收益</td><td>~1,177元/头纯收益</td></tr>
+    <tr><td>犊牛收益</td><td>~1,043元/头</td></tr>
+    <tr><td>架子牛收益</td><td>~1,414元/头</td></tr>
+    <tr><td>育肥牛收益</td><td>~2,861元/头（收益最高环节）</td></tr>
+    <tr><td>总成本</td><td>2,757-3,758元/头（活重）</td></tr>
+  </table>
+</div>
+</div>
+
+<div class="pain-point">
+<strong>🔴 痛点①：出栏率极低 (≈15%)</strong><br>
+受传统观念（惜杀惜售）和养殖方式（纯放牧）双重制约，牦牛平均出栏率仅约15%，远低于普通肉牛。大量牦牛经历「夏壮→秋肥→冬瘦→春死」循环，浪费牧草资源却不产生经济回报。
+</div>
+
+<div class="pain-point">
+<strong>🔴 痛点②：基层防疫体系薄弱</strong><br>
+藏区基层畜牧兽医人员80%以上为中专以下学历，经费不足、防疫员补助低，疫病防控不到位。
+</div>
+
+<h2>环节二：流通与加工端 🏭</h2>
+
+<div class="chain">
+<div class="chain-node">
+  <h3><span class="tag">3</span> 活畜流通（中间商环节）</h3>
+  <table>
+    <tr><td>主要模式</td><td>「牛贩子」上门收购 → 转卖给屠宰加工企业</td></tr>
+    <tr><td>问题</td><td>牧户与市场脱节，中间商截留利润，牧户议价能力弱</td></tr>
+    <tr><td>理想模式</td><td>「企业+合作社+基地+牧户」订单牧业——但实际落地率低</td></tr>
+  </table>
+</div>
+
+<div class="chain-arrow">↓</div>
+
+<div class="chain-node">
+  <h3><span class="tag">4</span> 屠宰与初级加工</h3>
+  <table>
+    <tr><td>屠宰季节性</td><td>高度集中 — 9-11月为出栏旺季</td></tr>
+    <tr><td>加工形态</td><td>简单分割为主，冷鲜肉/冻肉</td></tr>
+    <tr><td>鲜肉:冻肉</td><td>20:80（屠宰季冷鲜，其余季节以冻肉流通）</td></tr>
+    <tr><td>规模</td><td>2024年全国屠宰量487万头，同比+5.8%</td></tr>
+  </table>
+</div>
+
+<div class="chain-arrow">↓</div>
+
+<div class="chain-node">
+  <h3><span class="tag">5</span> 精深加工</h3>
+  <table>
+    <tr><td>主要产品</td><td>风干牦牛肉（最传统）、调理肉制品、休闲熟食、牦牛绒制品</td></tr>
+    <tr><td>新兴方向</td><td>牦牛骨胶原肽保健品、牦牛奶婴幼儿配方奶粉</td></tr>
+    <tr><td>精深加工占比</td><td>38% (2024)，目标43% (2030)</td></tr>
+    <tr><td>龙头企业</td><td>青海可可西里（年产能~10,000吨）、安多集团、长青春科尔集团</td></tr>
+    <tr><td>加工企业数量</td><td>80+家（2024年，较2020年增35%）</td></tr>
+    <tr><td>投资热度</td><td>2024年新增精深加工项目43个，总投资39.8亿元</td></tr>
+  </table>
+</div>
+</div>
+
+<div class="pain-point">
+<strong>🔴 痛点③：加工水平低，产品结构单一</strong><br>
+牛肉产品主体仍处于简单分割阶段，精深加工冷鲜肉和中高端产品产量有限。副产品（骨血、毛皮、头蹄）利用率低，造成价值浪费。
+</div>
+
+<div class="pain-point">
+<strong>🔴 痛点④：交通不便，成本高企</strong><br>
+藏区远离人口密集区，牧道/奶源道基础设施建设不足。以前每运输一斤牦牛肉到外地，运费几乎占成本的一半。
+</div>
+
+<h2>环节三：销售端 🛍️</h2>
+
+<div class="chain">
+<div class="chain-node">
+  <h3><span class="tag">6</span> 销售渠道</h3>
+  <table>
+    <tr><td>藏区自消费</td><td>>80%（牧民自食+藏区本地市场）</td></tr>
+    <tr><td>传统渠道</td><td>农贸市场、商超 — 仍占主导但比重下降</td></tr>
+    <tr><td>高端商超</td><td>麦德龙等 — 2025年大通牦牛肉入驻，标志性突破</td></tr>
+    <tr><td>电商渠道</td><td>占比31% (2024)，销售额34.7亿元，同比增长21.3%</td></tr>
+    <tr><td>餐饮渠道</td><td>火锅店、特色餐饮 — 安多集团开设牦牛火锅体验店</td></tr>
+    <tr><td>特产专卖</td><td>机场、景区、线上特产店</td></tr>
+  </table>
+</div>
+
+<div class="chain-arrow">↓</div>
+
+<div class="chain-node">
+  <h3><span class="tag">7</span> 终端价格链</h3>
+  <table>
+    <tr><td>活体收购</td><td>~4,000元/头</td></tr>
+    <tr><td>一级鲜肉收购价</td><td>~78元/kg</td></tr>
+    <tr><td>终端零售价</td><td>~130元/kg</td></tr>
+    <tr><td>精品部位</td><td>160+元/kg</td></tr>
+    <tr><td>vs 普通牛肉零售</td><td>68.73元/kg (2025年均) → 73.24元/kg (2026.5)</td></tr>
+    <tr style="background:#fef9e7;"><td colspan="2"><strong>🆕 新华·青海牦牛价格指数 (2026.6.23发布):</strong> 活牛1255点, 胴体1129点 → 2024探底→2025爬坡→2026蓄力突破</td></tr>
+  </table>
+</div>
+</div>
+
+<div class="pain-point">
+<strong>🔴 痛点⑤：品牌建设严重滞后</strong><br>
+大量牦牛肉在内地按「普通牛肉」价格销售，无法彰显其生态价值。牦牛肉的绿色生产方式、营养价值、高原稀缺性缺乏有效的市场传播。
+</div>
+
+<div class="pain-point">
+<strong>🔴 痛点⑥：季节性供需矛盾</strong><br>
+集中出栏（9-11月）→ 集中屠宰 → 大量冻肉库存。全年鲜肉:冻肉消费比约20:80——不是因为消费者喜欢冻肉，恰恰相反，中国消费者强烈偏好鲜肉，但因牦牛屠宰高度集中在秋季，一年中大部分时间只能买到冻肉。这是供给端约束而非需求端偏好。冷链物流和错峰出栏技术的发展正在改善这一矛盾。
+</div>
+
+<h2>📊 利润池分析</h2>
+
+<table style="width:100%; border-collapse:collapse; margin:1.5rem 0;">
+  <tr style="background:var(--accent); color:#fff;">
+    <th style="padding:0.5rem;">环节</th><th>收益/价格</th><th>利润特征</th>
+  </tr>
+  <tr><td style="padding:0.5rem;">母牛养殖</td><td>~1,177元/头</td><td>低利润，周期长</td></tr>
+  <tr><td style="padding:0.5rem;">犊牛养殖</td><td>~1,043元/头</td><td>低利润</td></tr>
+  <tr><td style="padding:0.5rem;">架子牛</td><td>~1,414元/头</td><td>中利润</td></tr>
+  <tr style="background:#fef9e7;"><td style="padding:0.5rem;"><strong>育肥牛</strong></td><td><strong>~2,861元/头</strong></td><td><strong>最高利润</strong></td></tr>
+  <tr><td style="padding:0.5rem;">屠宰加工</td><td>收购~78元/kg</td><td>季节性波动大</td></tr>
+  <tr style="background:#fef9e7;"><td style="padding:0.5rem;"><strong>精深加工</strong></td><td><strong>零售~130元/kg</strong></td><td><strong>附加值最高</strong></td></tr>
+  <tr><td style="padding:0.5rem;">品牌零售</td><td>160+元/kg</td><td>品牌溢价空间大</td></tr>
+</table>
+
+<div class="callout">
+<strong>🔑 核心洞察：</strong>供应链价值集中在<b>后端</b>——育肥增值和精深加工是利润最高的两个环节。传统的牧户仅能获取养殖端的微薄收益，大部分价值被中间商和加工企业截留。产业升级的方向就是让牧户通过合作社和订单农业分享更多后端价值。
+</div>
+
+<h2>📖 推荐深度阅读</h2>
+<ul>
+  <li><a href="https://www.chinairn.com/hyzx/20250729/164533461.shtml" target="_blank">《2025中国牦牛行业市场深度调研及供需格局分析》— 中研普华</a></li>
+  <li><a href="https://fsc.foodmate.net/show.php?itemid=738438" target="_blank">《2025年度肉牛牦牛产业与技术发展报告》— 国家肉牛牦牛产业技术体系</a> 🆕 含牦牛雪花牛肉、阿什旦品种、价格指数等最新进展</li>
+  <li><a href="https://www.businessnews.cn/2025/01/17/3887.html" target="_blank">大通牦牛肉入驻麦德龙案例 — 商业新闻</a></li>
+</ul>
+
+<h2>🧠 检索练习</h2>
+
+<div class="quiz">
+  <h3>测验 2：供应链填空</h3>
+
+  <div class="q">
+    <p>Q1. 牦牛传统养殖模式下，出栏周期为多少年？现代模式缩短到几年？</p>
+    <input type="text" id="a1" placeholder="格式：X年 → Y年">
+    <br><button onclick="check1()">检查</button>
+    <div class="feedback" id="f1"></div>
+  </div>
+
+  <div class="q">
+    <p>Q2. 牦牛平均出栏率约为多少？</p>
+    <input type="text" id="a2" placeholder="输入百分比...">
+    <br><button onclick="check2()">检查</button>
+    <div class="feedback" id="f2"></div>
+  </div>
+
+  <div class="q">
+    <p>Q3. 产业链五个环节中，收益最高的是哪个？（母牛/犊牛/架子牛/育肥牛）</p>
+    <input type="text" id="a3" placeholder="输入环节名称...">
+    <br><button onclick="check3()">检查</button>
+    <div class="feedback" id="f3"></div>
+  </div>
+
+  <div class="q">
+    <p>Q4. 牦牛屠宰旺季是哪几个月？</p>
+    <input type="text" id="a4" placeholder="格式：X月-X月">
+    <br><button onclick="check4()">检查</button>
+    <div class="feedback" id="f4"></div>
+  </div>
+
+  <div class="q">
+    <p>Q5. 电商渠道销售额2024年占比约为？</p>
+    <input type="text" id="a5" placeholder="输入百分比...">
+    <br><button onclick="check5()">检查</button>
+    <div class="feedback" id="f5"></div>
+  </div>
+
+  <div class="q">
+    <p>Q6. 牦牛肉一级鲜肉收购价和终端零售价分别约为？</p>
+    <input type="text" id="a6" placeholder="格式：收购X元/kg，零售Y元/kg">
+    <br><button onclick="check6()">检查</button>
+    <div class="feedback" id="f6"></div>
+  </div>
+</div>
+
+<script>
+function show(id, correct, ua) {
+  const el = document.getElementById(id);
+  const ok = ua.trim().toLowerCase() === correct.toLowerCase();
+  el.textContent = ok ? '✅ 正确！' : `❌ 正确答案：${correct}`;
+  el.className = 'feedback ' + (ok ? 'correct' : 'wrong');
+}
+function check1() { show('f1', '5-8年 → 2-3年', document.getElementById('a1').value); }
+function check2() { show('f2', '15%', document.getElementById('a2').value); }
+function check3() { show('f3', '育肥牛', document.getElementById('a3').value); }
+function check4() { show('f4', '9月-11月', document.getElementById('a4').value); }
+function check5() { show('f5', '31%', document.getElementById('a5').value); }
+function check6() { show('f6', '收购78元/kg，零售130元/kg', document.getElementById('a6').value); }
+</script>
+
+<hr>
+<p style="text-align:center; color:var(--muted); font-size:0.9rem;">
+  💬 有任何不理解的地方？<strong>直接问我</strong>——我是你的老师，可以帮你梳理任何不清楚的概念。
+</p>
+
+<div class="nav">
+  <a href="./0001-macro-industry-overview.html">← 上一课：宏观行业穿透</a>
+  <a href="./0003-market-landscape.html">下一课：市场格局与竞争 →</a>
+</div>
+
+</body>
+</html>
