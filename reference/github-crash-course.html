@@ -4,153 +4,322 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Git & GitHub 速通 · 实战笔记</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=JetBrains+Mono:wght@400..600&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f8fafb; --text: #1a1a2e; --muted: #5a6a7a;
-    --accent: #1a56db; --accent-bg: #e8f0fe;
-    --card: #fff; --border: #dde4ed;
-    --gold: #b8860b; --gold-bg: #fffdf0;
-    --red: #c62828; --red-bg: #fff5f5;
-    --green: #2e7d32; --green-bg: #f0f7f0;
-    --sidebar-w: 250px;
+    --navy:    #0b1120;
+    --navy-90: #1a2133;
+    --page:    #f9fafb;
+    --surface: #ffffff;
+    --accent:  #2563eb;
+    --accent-soft: #eff6ff;
+    --text:    #1e293b;
+    --text-2:  #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --border-strong: #cbd5e1;
+    --green:   #16a34a;
+    --green-bg:#f0fdf4;
+    --amber:   #d97706;
+    --amber-bg:#fffbeb;
+    --red:     #dc2626;
+    --red-bg:  #fef2f2;
+
+    --code-bg: #0f172a;
+    --code-fg: #e2e8f0;
+    --code-blue: #7dd3fc;
+    --code-green:#86efac;
+    --code-amber:#fde68a;
+    --code-red:  #fca5a5;
+    --code-muted:#64748b;
+
+    --sidebar-w: 248px;
+    --radius: 8px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior: smooth; }
+
   body {
-    font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
-    background: var(--bg); color: var(--text);
-    line-height: 1.85; font-size: 16px;
+    font-family: "Noto Serif SC", Georgia, "Times New Roman", serif;
+    background: var(--page); color: var(--text);
+    line-height: 1.82; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* ===== SIDEBAR ===== */
+  /* ========== SIDEBAR ========== */
   .sidebar {
     position: fixed; left: 0; top: 0; width: var(--sidebar-w); height: 100vh;
-    background: #0f172a; color: #94a3b8; overflow-y: auto; z-index: 100;
-    padding: 1.5rem 0; font-size: 0.86rem;
-    box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+    background: var(--navy); color: var(--muted); overflow-y: auto; z-index: 100;
+    padding: 1.8rem 0 2rem; font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+    font-size: 0.84rem; font-weight: 450;
+    box-shadow: 1px 0 0 rgba(255,255,255,0.04), 4px 0 20px rgba(0,0,0,0.2);
   }
   .sidebar h3 {
-    color: #e2e8f0; font-size: 0.9rem; padding: 0 1.2rem 0.8rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 0.6rem;
-    letter-spacing: 0.04em;
+    color: #e2e8f0; font-size: 0.82rem; font-weight: 600;
+    padding: 0 1.4rem 1rem; letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 0.6rem;
   }
   .sidebar a {
     display: block; color: #94a3b8; text-decoration: none;
-    padding: 0.3rem 1.2rem; transition: all 0.15s;
-    border-left: 3px solid transparent; font-size: 0.84rem;
+    padding: 0.32rem 1.4rem; transition: all 0.18s ease;
+    border-left: 3px solid transparent; font-size: 0.835rem;
+    line-height: 1.5;
   }
-  .sidebar a:hover { color: #e2e8f0; background: rgba(255,255,255,0.05); }
-  .sidebar a.active { color: #e2e8f0; border-left-color: #3b82f6; background: rgba(59,130,246,0.1); }
+  .sidebar a:hover { color: #e2e8f0; background: rgba(255,255,255,0.04); }
+  .sidebar a.active { color: #fff; border-left-color: var(--accent); background: rgba(37,99,235,0.12); }
 
-  /* ===== MAIN ===== */
-  .main { margin-left: var(--sidebar-w); max-width: 860px; padding: 3rem 2.5rem 5rem; }
+  /* ========== MAIN ========== */
+  .main { margin-left: var(--sidebar-w); max-width: 840px; padding: 4rem 3rem 6rem; }
 
-  /* ===== COVER ===== */
-  .cover { text-align:center; padding:2.5rem 0; border-bottom:2px solid var(--border); margin-bottom:2.5rem; }
-  .cover h1 { font-size:2rem; letter-spacing:0.06em; margin-bottom:0.4rem; color:#0f172a; }
-  .cover .sub { color:var(--muted); font-size:1rem; font-style:italic; }
-  .cover .badge { display:inline-block; background:var(--accent); color:#fff; font-size:0.75rem; padding:0.15rem 0.65rem; border-radius:10px; margin:1.5rem 0.3rem 0; letter-spacing:0.04em; }
+  /* ========== COVER ========== */
+  .cover {
+    text-align: center; padding: 1rem 0 3rem;
+    border-bottom: 1px solid var(--border); margin-bottom: 3.5rem;
+  }
+  .cover h1 {
+    font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+    font-size: 2.1rem; font-weight: 700; color: var(--navy);
+    letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 0.5rem;
+  }
+  .cover .sub {
+    color: var(--text-2); font-size: 1.02rem; font-style: italic; margin-bottom: 2rem;
+  }
+  .cover .kicker {
+    display: inline-flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+  }
+  .cover .tag {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 0.74rem; font-weight: 500; color: var(--accent);
+    background: var(--accent-soft); padding: 0.25rem 0.7rem;
+    border-radius: 100px; letter-spacing: 0.02em;
+  }
 
-  /* ===== HEADINGS ===== */
+  /* ========== SECTION HEADINGS ========== */
   h2.section {
-    font-size:1.25rem; color:#0f172a; border-left:4px solid var(--accent);
-    padding:0.4rem 0 0.4rem 0.9rem; margin:3.5rem 0 1.2rem;
-    scroll-margin-top:1.5rem;
+    font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--navy);
+    padding: 0 0 0.55rem 0; margin: 4rem 0 0.6rem;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 1.5rem; letter-spacing: -0.01em;
+    display: flex; align-items: baseline; gap: 0.6rem;
   }
-  h3 { font-size:1.05rem; color:#1a1a2e; margin:2rem 0 0.7rem; }
+  h2.section .num {
+    font-size: 0.82rem; font-weight: 600; color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+  h3 {
+    font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+    font-size: 1.05rem; font-weight: 650; color: var(--text);
+    margin: 2.2rem 0 0.6rem; letter-spacing: -0.01em;
+  }
+  p { margin-bottom: 0.8rem; color: var(--text); }
+  p + p { margin-top: -0.2rem; }
 
-  /* ===== Q&A BLOCKS ===== */
-  .qa { margin:1.5rem 0; }
+  /* ========== Q&A ========== */
+  .qa {
+    margin: 1.6rem 0; border-radius: var(--radius);
+    border: 1px solid var(--border); overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s ease;
+  }
+  .qa:hover { box-shadow: var(--shadow-md); }
   .qa-q {
-    background: var(--accent); color:#fff; padding:0.55rem 1rem 0.55rem 1.5rem;
-    border-radius:6px 6px 0 0; font-weight:600; font-size:0.95rem; position:relative;
+    background: var(--accent-soft); padding: 0.7rem 1.2rem;
+    font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+    font-weight: 600; font-size: 0.92rem; color: var(--accent);
+    border-bottom: 1px solid #dbeafe;
+    display: flex; align-items: flex-start; gap: 0.65rem;
   }
-  .qa-q::before { content:"Q"; position:absolute; left:-8px; top:50%; transform:translateY(-50%); background:var(--accent); color:#fff; width:24px; height:24px; border-radius:50%; text-align:center; font-size:0.8rem; line-height:24px; border:2px solid var(--bg); }
-  .qa-a { background:var(--card); border:1px solid var(--border); border-top:none; padding:1rem 1.3rem; border-radius:0 0 6px 6px; }
-  .qa-a p { margin-bottom:0.7rem; }
+  .qa-q::before {
+    content: "Q"; flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: 0.72rem; font-weight: 700; line-height: 1;
+  }
+  .qa-a {
+    background: var(--surface); padding: 1rem 1.2rem 1.1rem;
+  }
+  .qa-a p { margin-bottom: 0.65rem; color: var(--text-2); }
+  .qa-a p:last-child { margin-bottom: 0; }
 
-  /* ===== TABLES ===== */
-  table { width:100%; border-collapse:collapse; margin:0.8rem 0 1.2rem; font-size:0.88rem; }
-  thead th { background:#0f172a; color:#e2e8f0; padding:0.45rem 0.7rem; text-align:left; font-weight:600; font-size:0.82rem; letter-spacing:0.03em; }
-  tbody td { padding:0.4rem 0.7rem; border-bottom:1px solid var(--border); vertical-align:top; }
-  tbody tr:nth-child(even) td { background:var(--accent-bg); }
+  /* ========== TABLES ========== */
+  .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; border-radius: var(--radius); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  thead th {
+    background: #f1f5f9; color: var(--text); font-family: "Inter", system-ui, sans-serif;
+    font-weight: 600; font-size: 0.8rem; letter-spacing: 0.03em;
+    padding: 0.55rem 0.85rem; text-align: left;
+    border-bottom: 2px solid var(--border-strong);
+  }
+  tbody td {
+    padding: 0.5rem 0.85rem; border-bottom: 1px solid var(--border);
+    vertical-align: top; color: var(--text-2);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) td { background: #f8fafc; }
 
-  /* ===== CALLOUTS ===== */
-  .insight { background:var(--gold-bg); border-left:3px solid var(--gold); padding:0.8rem 1rem; margin:1.2rem 0; border-radius:0 4px 4px 0; font-size:0.9rem; }
-  .note    { background:var(--accent-bg); border-left:3px solid var(--accent); padding:0.8rem 1rem; margin:1.2rem 0; border-radius:0 4px 4px 0; font-size:0.9rem; }
-  .danger  { background:var(--red-bg);  border-left:3px solid var(--red);  padding:0.8rem 1rem; margin:1.2rem 0; border-radius:0 4px 4px 0; font-size:0.9rem; }
+  /* ========== CALLOUTS ========== */
+  .callout {
+    padding: 0.9rem 1.1rem; margin: 1.3rem 0; border-radius: var(--radius);
+    font-size: 0.9rem; line-height: 1.75;
+    font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+  }
+  .callout p { margin-bottom: 0.4rem; }
+  .callout strong { font-weight: 650; }
+  .callout-insight { background: var(--amber-bg); border: 1px solid #fde68a; color: #92400e; }
+  .callout-insight strong { color: #92400e; }
+  .callout-note    { background: var(--accent-soft); border: 1px solid #bfdbfe; color: #1e40af; }
+  .callout-note strong    { color: #1e40af; }
+  .callout-danger  { background: var(--red-bg); border: 1px solid #fecaca; color: #991b1b; }
+  .callout-danger strong  { color: #991b1b; }
+  .callout-success { background: var(--green-bg); border: 1px solid #bbf7d0; color: #166534; }
+  .callout-success strong { color: #166534; }
 
-  /* ===== CODE ===== */
-  code { background:#0f172a; color:#a5d6ff; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.88rem; font-family:"Cascadia Code","Fira Code",monospace; }
-  pre { background:#0f172a; color:#e2e8f0; padding:1rem 1.2rem; border-radius:6px; overflow-x:auto; margin:1rem 0; font-size:0.85rem; line-height:1.7; }
-  pre .cmd { color:#a5d6ff; }
-  pre .arg { color:#fca5a5; }
-  pre .cmt { color:#6b7280; }
-  pre .out { color:#86efac; }
+  /* ========== CODE ========== */
+  code {
+    font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
+    font-size: 0.86rem; font-weight: 450;
+    background: #f1f5f9; color: #0f172a;
+    padding: 0.12rem 0.4rem; border-radius: 4px;
+  }
+  pre {
+    background: var(--code-bg); color: var(--code-fg);
+    padding: 1rem 1.2rem 1.1rem; border-radius: var(--radius);
+    overflow-x: auto; margin: 1rem 0 1.4rem;
+    font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
+    font-size: 0.84rem; line-height: 1.7; font-weight: 400;
+    position: relative; box-shadow: var(--shadow-md);
+  }
+  /* Terminal chrome dots */
+  pre::before {
+    content: "● ● ●";
+    display: block; color: #475569; font-size: 0.65rem;
+    letter-spacing: 0.35rem; margin-bottom: 0.7rem;
+    opacity: 0.5;
+  }
+  pre .c1 { color: var(--code-muted); }  /* comment */
+  pre .kw { color: var(--code-blue);  }  /* keyword/command */
+  pre .ar { color: var(--code-red);   }  /* argument/flag */
+  pre .st { color: var(--code-green); }  /* string/output */
+  pre .am { color: var(--code-amber); }  /* amber highlight */
 
-  /* ===== FLOW ===== */
-  .flow { display:flex; align-items:center; justify-content:center; gap:0.5rem; margin:1.2rem 0; flex-wrap:wrap; font-size:0.84rem; }
+  /* ========== FLOW ========== */
+  .flow {
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    margin: 1.2rem 0; flex-wrap: wrap; font-family: "Inter", system-ui, sans-serif;
+  }
   .flow-box {
-    background:var(--card); border:2px solid var(--accent); border-radius:8px;
-    padding:0.5rem 0.8rem; text-align:center; font-weight:600; min-width:80px;
+    background: var(--surface); border: 1.5px solid var(--border-strong);
+    border-radius: var(--radius); padding: 0.55rem 0.9rem;
+    text-align: center; font-weight: 600; font-size: 0.86rem;
+    min-width: 90px; color: var(--text);
+    box-shadow: var(--shadow-sm);
   }
-  .flow-arrow { font-size:1.2rem; color:var(--accent); }
+  .flow-box small { display: block; font-weight: 400; font-size: 0.74rem; color: var(--muted); margin-top: 0.15rem; }
+  .flow-arrow { font-size: 1.2rem; color: var(--accent); padding: 0 0.5rem; font-weight: 700; }
 
-  .footer { text-align:center; color:var(--muted); font-size:0.82rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); }
-  .footer a { color:var(--accent); }
-
-  @media (max-width:860px) {
-    .sidebar { display:none; }
-    .main { margin-left:0; padding:2rem 1rem; }
-    .flow { flex-direction:column; }
-    .flow-arrow { transform:rotate(90deg); }
+  /* ========== KPI BAR ========== */
+  .kpi-bar {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.6rem; margin: 1rem 0 1.6rem;
   }
+  .kpi {
+    text-align: center; padding: 1rem 0.6rem;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  }
+  .kpi .val { font-family: "Inter", system-ui, sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); }
+  .kpi .lbl { font-size: 0.76rem; color: var(--muted); margin-top: 0.25rem; }
+
+  /* ========== DIVIDER ========== */
+  hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+  /* ========== DEFINITION LIST ========== */
+  .def-list { margin: 1rem 0; }
+  .def-item { padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
+  .def-item:last-child { border-bottom: none; }
+  .def-item strong { color: var(--text); font-weight: 700; font-family: "Inter", "Noto Sans SC", system-ui, sans-serif; }
+  .def-item span { color: var(--text-2); margin-left: 0.5rem; }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    text-align: center; color: var(--muted); font-size: 0.82rem;
+    margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    font-family: "Inter", system-ui, sans-serif;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 860px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 2rem 1.2rem; }
+    .cover h1 { font-size: 1.6rem; }
+    h2.section { font-size: 1.15rem; }
+    .flow { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .kpi-bar { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ========== PRINT ========== */
   @media print {
-    .sidebar { display:none; }
-    .main { margin-left:0; padding:1.5rem; font-size:10pt; }
-    h2.section { page-break-before:always; }
-    .qa-a { break-inside:avoid; }
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 1.5rem; font-size: 10pt; }
+    h2.section { page-break-before: always; }
+    pre, .qa, table, .callout { break-inside: avoid; }
+    pre::before { display: none; }
+    body { color: #000; background: #fff; }
   }
+
+  /* ========== FOCUS ========== */
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 </style>
 </head>
 <body>
 
-<!-- ==================== SIDEBAR ==================== -->
-<nav class="sidebar" id="sidebar">
-  <h3>📑 Git & GitHub 速通</h3>
-  <a href="#cover">封面</a>
+<nav class="sidebar" id="sidebar" aria-label="目录导航">
+  <h3>Git &amp; GitHub 速通</h3>
   <a href="#s0">起点：你要做什么</a>
   <a href="#s1">一、Git 和 GitHub 是两样东西</a>
-  <a href="#s2">二、git init — 造时间机器</a>
+  <a href="#s2">二、git init — 时间机器</a>
   <a href="#s3">三、git add → commit — 两步存档</a>
-  <a href="#s4">四、git push — 同步到 GitHub</a>
+  <a href="#s4">四、git push — 同步到远程</a>
   <a href="#s5">五、SSH 密钥 — 身份认证</a>
   <a href="#s6">六、创建仓库</a>
   <a href="#s7">七、添加 SSH 公钥</a>
   <a href="#s8">八、GitHub Pages — 变网站</a>
   <a href="#s9">九、自动更新机制</a>
   <a href="#s10">十、git status 解读</a>
-  <a href="#s11">十一、.gitignore — 黑名单</a>
-  <a href="#s12">十二、完整命令速查</a>
+  <a href="#s11">十一、.gitignore</a>
+  <a href="#s12">十二、命令速查</a>
   <a href="#s13">十三、概念词典</a>
 </nav>
 
-<!-- ==================== MAIN ==================== -->
 <div class="main">
 
+<!-- COVER -->
 <div class="cover" id="cover">
-  <h1>Git & GitHub 速通</h1>
+  <h1>Git &amp; GitHub 速通</h1>
   <p class="sub">从零到发布网站的实战笔记</p>
-  <span class="badge">2026 年 7 月</span>
-  <span class="badge">基于真实操作回顾</span>
+  <div class="kicker">
+    <span class="tag">2026 年 7 月</span>
+    <span class="tag">基于真实操作</span>
+    <span class="tag">零基础友好</span>
+  </div>
 </div>
 
-<div class="note">
-<strong>背景：</strong>本笔记源于一次真实操作——将一份行业分析报告通过 Git 推送到 GitHub，并用 GitHub Pages 发布为网站。每一步操作都拆解为「做了什么 + 为什么这样做 + 底层原理」。适合零基础对照学习。
+<div class="callout callout-note">
+<strong>背景：</strong>本笔记源于一次真实操作——将一份行业分析报告通过 Git 推送到 GitHub，再用 GitHub Pages 发布为公开网站。每一步拆解为「做了什么 + 为什么这样做 + 底层原理」，适合对照学习。
 </div>
 
-<!-- ===== SECTION 0 ===== -->
-<h2 class="section" id="s0">起点：你要做什么</h2>
+<!-- ===== S0 ===== -->
+<h2 class="section" id="s0"><span class="num">00</span> 起点：你要做什么</h2>
 
 <p>假设你有一堆写好的文件（报告、网页、代码），你想：</p>
 <ol>
@@ -159,494 +328,441 @@
   <li>生成一个 URL，别人点开就能看</li>
 </ol>
 
-<p>答案是：<strong>Git（版本控制）+ GitHub（远程托管）+ GitHub Pages（网站发布）</strong>，三样东西串成一条链。</p>
+<p>答案是三条工具链串在一起：</p>
 
 <div class="flow">
-  <div class="flow-box">Git<br><small>本地版本管理</small></div>
+  <div class="flow-box">Git<small>本地版本管理</small></div>
   <div class="flow-arrow">→</div>
-  <div class="flow-box">GitHub<br><small>远程托管</small></div>
+  <div class="flow-box">GitHub<small>远程托管</small></div>
   <div class="flow-arrow">→</div>
-  <div class="flow-box">GitHub Pages<br><small>网站发布</small></div>
+  <div class="flow-box">GitHub Pages<small>网站发布</small></div>
 </div>
 
+<!-- ===== S1 ===== -->
+<h2 class="section" id="s1"><span class="num">01</span> Git 和 GitHub 是两样东西</h2>
 
-<!-- ===== SECTION 1 ===== -->
-<h2 class="section" id="s1">一、Git 和 GitHub 是两样东西</h2>
+<p>这是最容易混淆的基础概念。先拆开：</p>
 
-<p>先建立最核心的概念区分：</p>
-
+<div class="table-wrap">
 <table>
   <thead><tr><th style="width:15%;"></th><th style="width:42%;">Git</th><th>GitHub</th></tr></thead>
   <tbody>
-    <tr><td><strong>是什么</strong></td><td>你电脑上的一个软件（命令行工具）</td><td>一个网站 (github.com)，微软旗下的公司</td></tr>
-    <tr><td><strong>干什么</strong></td><td>记录文件版本——「时间机器」</td><td>存放 Git 仓库 + 协作 + 部署</td></tr>
-    <tr><td><strong>需要联网？</strong></td><td>不需要，完全离线可用</td><td>需要，它是一个远程服务器</td></tr>
-    <tr><td><strong>关系</strong></td><td colspan="2">Git 管本地 → <code>git push</code> 推到 GitHub → 代码在云端 → 别人能访问</td></tr>
+    <tr><td><strong>是什么</strong></td><td>你电脑上的命令行软件</td><td>一个网站，微软旗下</td></tr>
+    <tr><td><strong>干什么</strong></td><td>记录文件版本——时间机器</td><td>存放 Git 仓库 + 协作 + 部署</td></tr>
+    <tr><td><strong>需要联网？</strong></td><td>不需要，完全离线可用</td><td>需要，它是远程服务器</td></tr>
+    <tr><td><strong>关系</strong></td><td colspan="2">Git 管本地 → <code>git push</code> 推到 GitHub → 代码在云端</td></tr>
   </tbody>
 </table>
-
-<div class="insight">
-<strong>关键认知：</strong>你大部分时间在跟 Git 打交道（commit、查看历史、回退），只在需要同步或发布的时候才跟 GitHub 通信（push、pull、clone）。Git 是每天用的工具，GitHub 是最终的目的地。
 </div>
 
-<hr style="margin:1.5rem 0; border:none; border-top:1px solid var(--border);">
-
 <div class="qa">
-  <div class="qa-q">所以 GitHub 只是「存代码的网盘」吗？</div>
+  <div class="qa-q">所以 GitHub 只是「存代码的网盘」？</div>
   <div class="qa-a">
-    <p>远超网盘。网盘只存最新版本，GitHub 存<strong>完整的历史记录</strong>——每次 commit 的快照都在。你可以：</p>
-    <ul>
-      <li>查看三年前的代码长什么样</li>
-      <li>对比任意两个版本之间的差异（谁改了什么）</li>
-      <li>多人同时改同一个项目而不会互相覆盖</li>
-      <li>通过 Pull Request 做代码审查</li>
-      <li>用 Issues 跟踪 Bug 和需求</li>
-      <li>用 Actions 做自动化（测试、部署）</li>
-    </ul>
+    <p>远超网盘。网盘只存最新版本，GitHub 存<strong>完整的历史记录</strong>——每次 commit 的快照都在。你可以查看三年前的代码、对比任意两版差异、多人同时改同一项目不会互相覆盖、用 Pull Request 做代码审查、用 Issues 跟踪 Bug。</p>
     <p>GitHub <strong>不是网盘，是协作平台。网盘只是它最基础的功能。</strong></p>
   </div>
 </div>
 
+<!-- ===== S2 ===== -->
+<h2 class="section" id="s2"><span class="num">02</span> git init — 造一台时间机器</h2>
 
-<!-- ===== SECTION 2 ===== -->
-<h2 class="section" id="s2">二、git init — 造一台「时间机器」</h2>
+<pre><span class="kw">git init</span></pre>
 
-<pre><span class="cmd">git init</span></pre>
+<p>在当前文件夹里创建一个隐藏目录 <code>.git</code>。从此刻起，这个文件夹就不再是普通文件夹了——它变成了一个<strong>仓库 (Repository)</strong>：</p>
 
-<p>这行命令在当前文件夹里创建一个隐藏目录 <code>.git</code>。这个目录就是「时间机器」的核心——它会在后面记录你全部的版本历史。</p>
-
+<div class="table-wrap">
 <table>
   <thead><tr><th style="width:30%;">操作前</th><th>操作后</th></tr></thead>
   <tbody>
-    <tr><td>一个普通文件夹，改了文件没有痕迹</td><td>文件夹变成「仓库 (Repository)」，每次修改都可以存档</td></tr>
+    <tr><td>一个普通文件夹，改了文件没有痕迹</td><td>文件夹变成仓库，每次修改都可存档、可回溯</td></tr>
   </tbody>
 </table>
+</div>
 
-<p><code>.git</code> 目录里有什么？（不用记，知道存在就行）</p>
+<p><code>.git</code> 里有什么？你不用进去翻，但知道结构有助于理解后面的一切：</p>
 
+<div class="table-wrap">
 <table>
   <thead><tr><th>子目录/文件</th><th>存了什么</th></tr></thead>
   <tbody>
-    <tr><td><code>objects/</code></td><td>所有快照的实际数据（文件内容 + 目录结构）</td></tr>
-    <tr><td><code>refs/</code></td><td>分支和标签的指针（指向最新的 commit）</td></tr>
+    <tr><td><code>objects/</code></td><td>所有快照的实际数据——文件内容 + 目录结构</td></tr>
+    <tr><td><code>refs/</code></td><td>分支和标签的指针，指向最新的 commit</td></tr>
     <tr><td><code>HEAD</code></td><td>当前你在哪个分支</td></tr>
-    <tr><td><code>logs/</code></td><td>操作记录（每次 commit、checkout 的时间戳）</td></tr>
-    <tr><td><code>index</code></td><td>暂存区——购物车的实际存储文件</td></tr>
+    <tr><td><code>index</code></td><td>暂存区——「购物车」在磁盘上的实体</td></tr>
+    <tr><td><code>logs/</code></td><td>每次操作的时间戳记录</td></tr>
   </tbody>
 </table>
-
-<div class="qa">
-  <div class="qa-q">为什么叫「仓库 (Repository)」而不叫「文件夹」？</div>
-  <div class="qa-a">
-    <p>因为里面不只有文件本身，还存了<strong>整个项目的版本历史</strong>。一个 <code>.git</code> 隐藏文件夹 + 工作目录 = 一个仓库。普通文件夹里只有「现在」，仓库里有「现在 + 所有过去」。</p>
-  </div>
 </div>
 
+<div class="callout callout-insight">
+<strong>关键认知：</strong>普通文件夹只有「现在」，仓库有「现在 + 所有过去」。这就是「版本控制」四个字的物理含义。
+</div>
 
-<!-- ===== SECTION 3 ===== -->
-<h2 class="section" id="s3">三、git add → git commit — 存档分两步</h2>
+<!-- ===== S3 ===== -->
+<h2 class="section" id="s3"><span class="num">03</span> git add → git commit — 存档分两步</h2>
 
 <p>这是 Git 最核心、最容易搞混的设计：<strong>保存不是一键完成，而是两步。</strong></p>
 
-<pre><span class="cmd">git add -A</span>           <span class="cmt">第一步：把文件放进「暂存区」（购物车）</span>
-<span class="cmd">git commit -m "..."</span>   <span class="cmt">第二步：给购物车拍一张快照，永久保存</span></pre>
+<pre><span class="kw">git add</span> <span class="ar">-A</span>           <span class="c1">第一步：文件进暂存区（购物车）</span>
+<span class="kw">git commit</span> <span class="ar">-m</span> <span class="st">"留言"</span>   <span class="c1">第二步：给购物车拍永久快照</span></pre>
 
 <h3>为什么设计成两步？</h3>
 
-<p>场景：你在写报告，同时改了三个文件——数据表、分析结论、封面排版。数据表和结论改完了可以存，但封面改到一半还不满意。如果只能一键全存，半成品的封面也被存档了。</p>
+<p>你在写报告，同时改了三个文件——数据表、分析结论、封面排版。数据表和结论改完了可以存，但封面改到一半还不满意。如果只能一键全存，半成品的封面也被存档了。</p>
 
 <p>有了暂存区，你可以<strong>选择哪些文件这次要存档，哪些下次再说</strong>：</p>
 
 <div class="flow">
-  <div class="flow-box">工作目录<br><small>你正在编辑的文件</small></div>
+  <div class="flow-box">工作目录<small>正在编辑的文件</small></div>
   <div class="flow-arrow">→ add →</div>
-  <div class="flow-box">暂存区<br><small>购物车·挑选这次要存的</small></div>
+  <div class="flow-box">暂存区<small>购物车 · 挑选这次要存的</small></div>
   <div class="flow-arrow">→ commit →</div>
-  <div class="flow-box">仓库<br><small>📸 永久快照</small></div>
+  <div class="flow-box">仓库<small>📸 永久快照</small></div>
 </div>
 
+<div class="table-wrap">
 <table>
-  <thead><tr><th>术语</th><th>严格定义</th><th>比喻</th></tr></thead>
+  <thead><tr><th>术语</th><th>严格定义</th><th>类比</th></tr></thead>
   <tbody>
-    <tr><td><strong>工作目录 (Working Directory)</strong></td><td>你在编辑的、看得见摸得着的文件</td><td>你的办公桌</td></tr>
-    <tr><td><strong>暂存区 (Staging Area / Index)</strong></td><td>下一次 commit 将要包含的文件列表，存在 <code>.git/index</code> 里</td><td>购物车——挑选哪些这次结账</td></tr>
-    <tr><td><strong>仓库 (Repository)</strong></td><td>所有已提交快照的集合，存在 <code>.git/objects/</code> 里</td><td>存档室——永远可以回去看</td></tr>
+    <tr><td><strong>工作目录</strong></td><td>你正在编辑的、看得见摸得着的文件</td><td>你的办公桌</td></tr>
+    <tr><td><strong>暂存区 (Index)</strong></td><td>下一次 commit 将要包含的文件列表，存在 <code>.git/index</code></td><td>购物车</td></tr>
+    <tr><td><strong>仓库 (Repository)</strong></td><td>所有已提交快照的集合，存在 <code>.git/objects/</code></td><td>存档室</td></tr>
   </tbody>
 </table>
+</div>
 
 <h3>commit 里面存了什么？</h3>
 
-<p>每次 commit 不是一个「差异文件」，而是一张<strong>完整快照 (Snapshot)</strong>——当时所有文件的状态。同时附带了：</p>
+<p>每次 commit 不是存「跟上一版的差异」，而是一张<strong>完整快照 (Snapshot)</strong>——当时所有文件的状态，附带：</p>
 
 <ul>
   <li>一个唯一 ID（SHA-1 哈希，如 <code>df30a0e</code>）</li>
   <li>你的留言（<code>-m</code> 后面的内容）</li>
-  <li>时间戳</li>
-  <li>作者信息</li>
-  <li>指向上一个 commit 的指针（形成历史链）</li>
+  <li>时间戳 + 作者信息</li>
+  <li>指向上一个 commit 的指针——形成一条历史链</li>
 </ul>
 
 <div class="qa">
   <div class="qa-q">commit 是不是像游戏存档？</div>
   <div class="qa-a">
-    <p>是，但有重要区别：</p>
-    <table>
-      <thead><tr><th>游戏存档</th><th>Git commit</th></tr></thead>
-      <tbody>
-        <tr><td>通常只能覆盖</td><td>永不覆盖——每次 commit 都在旧的基础上追加</td></tr>
-        <tr><td>存档之间没有关联</td><td>每个 commit 记录自己的「父 commit」，形成一条链</td></tr>
-        <tr><td>只有一个存档槽</td><td>可以有无数个 commit，任意跳转</td></tr>
-        <tr><td>不能看到「上次存档到现在变了什么」</td><td><code>git diff</code> 可以精确显示两版之间的差异</td></tr>
-      </tbody>
-    </table>
+    <p>是，但有两个关键区别：</p>
+    <p><strong>① 永不覆盖。</strong>游戏存档通常只能覆盖旧存档，Git commit 永远在旧的上面追加。你永远可以回到任何一个历史版本。</p>
+    <p><strong>② 链式结构。</strong>每个 commit 记录自己的「父 commit」，形成一条完整的链条。游戏存档之间没有这种关联。</p>
   </div>
 </div>
 
+<div class="callout callout-insight">
+<strong>最佳实践：</strong>commit 要频繁、颗粒度要细——每完成一个逻辑单元就存档一次。留言写清楚「做了什么」，而不是「什么时候做的」。好的留言让三个月后的你自己也能看懂。
+</div>
 
-<!-- ===== SECTION 4 ===== -->
-<h2 class="section" id="s4">四、git push — 把存档同步到 GitHub</h2>
+<!-- ===== S4 ===== -->
+<h2 class="section" id="s4"><span class="num">04</span> git push — 把存档同步到 GitHub</h2>
 
-<pre><span class="cmd">git push</span> <span class="arg">-u origin master</span></pre>
+<pre><span class="kw">git push</span> <span class="ar">-u origin master</span></pre>
 
-<p>commit 只存在你电脑的 <code>.git</code> 文件夹里——GitHub 完全不知情。push 的作用就是把本地的新 commit 发送到远程仓库。</p>
+<p>commit 只存在你电脑的 <code>.git/objects/</code> 里——GitHub 完全不知情。push 把本地的新 commit 发送到远程仓库。</p>
 
+<div class="table-wrap">
 <table>
   <thead><tr><th>命令要素</th><th>意思</th></tr></thead>
   <tbody>
-    <tr><td><code>push</code></td><td>把本地的新存档「推」到远程</td></tr>
-    <tr><td><code>origin</code></td><td>远程仓库的别名，默认指向你 clone 或添加的那个 URL<br>实际值是 <code>git@github.com:6HOLLIS/yak-meat-report.git</code></td></tr>
-    <tr><td><code>master</code></td><td>分支名——主线默认叫 master</td></tr>
-    <tr><td><code>-u</code></td><td>设置上游 (upstream) 跟踪——让 Git 记住这个对应关系<br>以后只敲 <code>git push</code> 就够了，不用每次写 <code>origin master</code></td></tr>
+    <tr><td><code>push</code></td><td>把本地新存档「推」到远程</td></tr>
+    <tr><td><code>origin</code></td><td>远程仓库别名，实际值是 <code>git@github.com:6HOLLIS/...</code></td></tr>
+    <tr><td><code>master</code></td><td>分支名，主线默认叫 master</td></tr>
+    <tr><td><code>-u</code></td><td>记住这个对应关系——以后只敲 <code>git push</code> 就够</td></tr>
   </tbody>
 </table>
+</div>
 
 <h3>commit 和 push 的关系</h3>
 
+<div class="table-wrap">
 <table>
   <thead><tr><th></th><th>commit</th><th>push</th></tr></thead>
   <tbody>
     <tr><td>数据去哪</td><td>本地 <code>.git/objects/</code></td><td>GitHub 服务器</td></tr>
     <tr><td>需要联网？</td><td>不需要</td><td>需要</td></tr>
     <tr><td>别人能看到？</td><td>不能</td><td>能（Public 仓库）</td></tr>
-    <tr><td>频率</td><td>很频繁——每完成一个小改动就 commit</td><td>按需——攒几个 commit 后 push 一次</td></tr>
+    <tr><td>频率</td><td>频繁——每完成一个小改动就 commit</td><td>按需——攒几个 commit 后 push 一次</td></tr>
   </tbody>
 </table>
-
-<div class="insight">
-<strong>最佳实践：</strong>commit 要频繁（每完成一个逻辑单元就存档），push 可以攒一波再推。比如你今天改了 5 次报告，可以 5 个 commit + 1 次 push，GitHub 上会看到 5 个历史记录。
 </div>
 
-
-<!-- ===== SECTION 5 ===== -->
-<h2 class="section" id="s5">五、SSH 密钥 — GitHub 怎么知道「是你」</h2>
+<!-- ===== S5 ===== -->
+<h2 class="section" id="s5"><span class="num">05</span> SSH 密钥 — GitHub 怎么知道「是你」</h2>
 
 <h3>基础概念</h3>
 
-<table>
-  <thead><tr><th>术语</th><th>严格定义</th></tr></thead>
-  <tbody>
-    <tr><td><strong>SSH</strong></td><td>Secure Shell，一个网络协议，用于在两台机器之间建立加密连接。不只是 GitHub 用，登录远程服务器、传输文件都走 SSH</td></tr>
-    <tr><td><strong>密钥对 (Key Pair)</strong></td><td>一对数学上相关联的文件——<strong>私钥</strong>和<strong>公钥</strong>。它们来自同一套数学参数，但私钥推导公钥容易，公钥反推私钥在计算上不可行</td></tr>
-    <tr><td><strong>非对称加密</strong></td><td>上面这套机制的名称：「加密和解密用不同的钥匙」——跟「对称加密」（一个密码既加密又解密）相对</td></tr>
-  </tbody>
-</table>
+<div class="def-list">
+<div class="def-item"><strong>SSH</strong><span>Secure Shell，一个网络协议，用于在两台机器间建立加密连接。不只是 GitHub 用，登录远程服务器、传输文件都走它</span></div>
+<div class="def-item"><strong>密钥对</strong><span>一对数学上关联的文件——<strong>私钥</strong>（绝不离身）和<strong>公钥</strong>（可以公开）。用公钥加密的东西只有私钥能解开</span></div>
+<div class="def-item"><strong>非对称加密</strong><span>加密和解密用不同钥匙——跟「对称加密」（一个密码既加密又解密，如 ZIP 密码）相对</span></div>
+</div>
 
 <h3>私钥 vs 公钥</h3>
 
+<div class="table-wrap">
 <table>
   <thead><tr><th style="width:20%;"></th><th>私钥</th><th>公钥</th></tr></thead>
   <tbody>
-    <tr><td><strong>在哪</strong></td><td>你电脑上 <code>~/.ssh/id_ed25519</code></td><td>GitHub 网站（你粘贴的那行）</td></tr>
-    <tr><td><strong>文件大小</strong></td><td>411 字节</td><td>96 字节</td></tr>
-    <tr><td><strong>谁能看</strong></td><td>只有你。权限 600（仅文件所有者可读写）</td><td>公开无所谓，没有任何安全风险</td></tr>
-    <tr><td><strong>做什么用</strong></td><td>证明「我是我」——用私钥对一条消息做数字签名</td><td>验证「你确实是你」——用公钥验证那个签名</td></tr>
-    <tr><td><strong>泄密后果</strong></td><td>别人可以冒充你 push 代码、登录服务器</td><td>零后果</td></tr>
+    <tr><td><strong>在哪</strong></td><td>你电脑上 <code>~/.ssh/id_ed25519</code></td><td>GitHub 网站上（你粘贴的那行）</td></tr>
+    <tr><td><strong>文件大小</strong></td><td>~400 字节</td><td>~100 字节</td></tr>
+    <tr><td><strong>谁能看</strong></td><td>只有你。权限设为 600</td><td>公开无所谓，无安全风险</td></tr>
+    <tr><td><strong>做什么</strong></td><td>证明「我是我」——做数字签名</td><td>验证「你确实是你」——验证签名</td></tr>
+    <tr><td><strong>泄密后果</strong></td><td>别人可冒充你 push 代码</td><td>零后果</td></tr>
   </tbody>
 </table>
+</div>
 
-<h3>认证过程：挑战-应答 (Challenge-Response)</h3>
+<h3>认证过程：挑战-应答</h3>
 
-<pre>1. 你的电脑 → GitHub：  「我是 6HOLLIS，我要 push」
-2. GitHub → 你的电脑：    「证明一下。用 6HOLLIS 的公钥加密这段随机数：0x8a3f...」
-3. 你的电脑 → 用私钥解密 → 发回原文
-4. GitHub → 用公钥验证：  「解密结果和我发的随机数一致 → 你确实持有私钥 → 放行」</pre>
+<pre>1. 你的电脑 → GitHub：  <span class="st">"我是 6HOLLIS，我要 push"</span>
+2. GitHub → 你的电脑：  <span class="st">"证明一下。用 6HOLLIS 的公钥加密这段随机数：</span><span class="am">0x8a3f...</span><span class="st">"</span>
+3. 你的电脑 → 私钥解密 → 发回原文
+4. GitHub → 公钥验证： <span class="st">"解密结果和我发的随机数一致 → 你确实持有私钥 → 放行"</span></pre>
 
-<div class="insight">
-<strong>安全的核心：</strong>私钥<strong>从未离开你的电脑</strong>，密码<strong>从未出现在传输中</strong>。传输的只是加密后的挑战码——就算被截获，攻击者没有私钥也解不开挑战。这就是为什么 SSH 密钥比用户名密码登录更安全。
+<div class="callout callout-insight">
+<strong>安全的核心：</strong>私钥从未离开你的电脑，密码从未出现在传输中。传输的只是加密后的挑战码——就算被截获，攻击者没有私钥解不开。这就是为什么 SSH 密钥比用户名密码登录安全得多。
 </div>
 
 <h3>Ed25519 是什么</h3>
 
-<p>SSH 密钥有三种主流算法。你生成命令里的 <code>-t ed25519</code> 就是指定它：</p>
+<p>你生成命令里的 <code>-t ed25519</code> 指定了算法类型：</p>
 
+<div class="table-wrap">
 <table>
   <thead><tr><th>算法</th><th>密钥长度</th><th>速度</th><th>安全等级</th></tr></thead>
   <tbody>
-    <tr><td>RSA 4096</td><td>很长的字符串（~800 字符）</td><td>慢</td><td>高，但量子计算下有理论弱点</td></tr>
-    <tr><td>ECDSA</td><td>较短</td><td>中</td><td>中，但依赖高质量的随机数源</td></tr>
+    <tr><td>RSA 4096</td><td>~800 字符</td><td>慢</td><td>高</td></tr>
+    <tr><td>ECDSA</td><td>较短</td><td>中</td><td>中</td></tr>
     <tr><td><strong>Ed25519</strong></td><td>最短（96 字符）</td><td>最快</td><td><strong>最高</strong>，抗侧信道攻击</td></tr>
   </tbody>
 </table>
+</div>
 
 <p>Ed25519 是目前业界推荐的标准，新项目默认用它。</p>
 
 <h3>生成命令完整拆解</h3>
 
-<pre><span class="cmd">ssh-keygen -t ed25519 -C</span> <span class="arg">"6HOLLIS@github"</span> <span class="cmd">-f</span> <span class="arg">~/.ssh/id_ed25519</span> <span class="cmd">-N</span> <span class="arg">""</span></pre>
+<pre><span class="kw">ssh-keygen</span> <span class="ar">-t ed25519</span> <span class="ar">-C</span> <span class="st">"6HOLLIS@github"</span> <span class="ar">-f</span> <span class="ar">~/.ssh/id_ed25519</span> <span class="ar">-N</span> <span class="st">""</span></pre>
 
+<div class="table-wrap">
 <table>
   <thead><tr><th>参数</th><th>意思</th></tr></thead>
   <tbody>
     <tr><td><code>ssh-keygen</code></td><td>SSH 密钥生成工具</td></tr>
     <tr><td><code>-t ed25519</code></td><td>算法类型：Ed25519</td></tr>
-    <tr><td><code>-C "6HOLLIS@github"</code></td><td>注释 (Comment)——不参与加密运算，仅作为标签帮你识别「这是哪把密钥」</td></tr>
-    <tr><td><code>-f ~/.ssh/id_ed25519</code></td><td>输出文件名</td></tr>
-    <tr><td><code>-N ""</code></td><td>不设密码短语 (Passphrase)——空字符串。设了的话每次 push 要输密码，更安全但更麻烦</td></tr>
+    <tr><td><code>-C "6HOLLIS@github"</code></td><td>注释 (Comment)——不参与加密，仅作标签帮你识别这是哪把密钥</td></tr>
+    <tr><td><code>-f ~/.ssh/id_ed25519</code></td><td>输出文件路径</td></tr>
+    <tr><td><code>-N ""</code></td><td>不设密码短语——空字符串。设了的话每次 push 要输密码</td></tr>
   </tbody>
 </table>
+</div>
 
 <h3>known_hosts：防冒充</h3>
 
-<pre><span class="cmd">ssh-keyscan -t rsa github.com</span> <span class="arg">>> ~/.ssh/known_hosts</span></pre>
+<pre><span class="kw">ssh-keyscan</span> <span class="ar">-t rsa</span> <span class="ar">github.com</span> <span class="c1">>> ~/.ssh/known_hosts</span></pre>
 
-<p>第一次连接新服务器时，SSH 会弹：<em>「这台机器的指纹是 XX:XX:XX，确实要连接它吗？」</em>。如果攻击者在中间建了一台假服务器（中间人攻击 MITM），指纹就对不上。这行命令提前把 GitHub 的真实公钥写入 <code>known_hosts</code>，告诉 SSH：<em>「我已确认这台机器就是 GitHub，以后不用再问」。</em></p>
+<p>第一次连接新服务器时 SSH 会问「这台机器指纹是 XX，确定要连接吗？」。这行命令提前把 GitHub 的真实公钥写入 <code>known_hosts</code>，等于「我已确认这台机器确实是 GitHub」——防止中间人冒充。</p>
 
 <div class="qa">
   <div class="qa-q">每次 push 需要手动输密钥吗？</div>
   <div class="qa-a">
-    <p>不需要，完全自动。<code>git push</code> 触发 → SSH 自动在 <code>~/.ssh/</code> 目录找到私钥 → 自动完成挑战-应答认证 → push 成功。整个过程你只感知到那一个命令。</p>
+    <p><strong>不需要，完全自动。</strong><code>git push</code> 触发 → SSH 自动在 <code>~/.ssh/</code> 找到私钥 → 自动完成挑战-应答 → push 成功。整个过程你只感知到那一个命令。</p>
   </div>
 </div>
 
 <div class="qa">
   <div class="qa-q">换电脑了怎么办？</div>
   <div class="qa-a">
-    <p>新电脑上没有私钥，push 就会报 <code>Permission denied (publickey)</code>。两个选择：</p>
-    <ol>
-      <li>把旧私钥文件拷到新电脑的 <code>~/.ssh/</code> 目录下</li>
-      <li>在新电脑上重新生成一对，把新公钥加到 GitHub——旧公钥可以留着（多设备共存），也可以删掉</li>
-    </ol>
+    <p>新电脑上没有私钥，push 会报 <code>Permission denied (publickey)</code>。两种方案：① 把旧私钥文件拷到新电脑的 <code>~/.ssh/</code> 目录；② 在新电脑重新生成一对，把新公钥加到 GitHub。两种方式等价。</p>
   </div>
 </div>
 
+<!-- ===== S6 ===== -->
+<h2 class="section" id="s6"><span class="num">06</span> 操作一：在 GitHub 上创建仓库</h2>
 
-<!-- ===== SECTION 6 ===== -->
-<h2 class="section" id="s6">六、操作一：在 GitHub 上创建仓库</h2>
+<p>打开 <code>github.com/new</code>：</p>
 
-<p>打开 <code>github.com/new</code>，填以下内容：</p>
-
+<div class="table-wrap">
 <table>
-  <thead><tr><th style="width:30%;">你填/选的</th><th>意思</th></tr></thead>
+  <thead><tr><th style="width:35%;">你填/选的</th><th>意思</th></tr></thead>
   <tbody>
     <tr><td>Repository name: <code>yak-meat-report</code></td><td>仓库名——会出现在 URL 里</td></tr>
-    <tr><td>Public</td><td>公开仓库——任何人可以看，但不能改（除非你邀请）</td></tr>
-    <tr><td><strong>不勾</strong> Add a README file</td><td>如果你勾了，GitHub 会先给你建一个带 README 的空仓库。但你的本地项目已经有文件了——两个不同的初始提交会导致「无关历史合并」的问题，解决起来很痛苦</td></tr>
+    <tr><td>Public</td><td>公开仓库——任何人可以看，不能改（除非你邀请）</td></tr>
+    <tr><td><strong>不勾</strong> Add a README file</td><td>如果你勾了，GitHub 会先建一个带 README 的空仓库。而你本地已有文件——两个不同的根 commit 会产生「无关历史」冲突，初学者最常卡在这里</td></tr>
     <tr><td><strong>不勾</strong> Add .gitignore</td><td>同上——你的项目已经有 <code>.gitignore</code> 了</td></tr>
   </tbody>
 </table>
-
-<div class="danger">
-<strong>⚠️ 关键坑：</strong>如果 GitHub 上已经有一个初始 commit（比如勾了 README），你本地又初始化了 Git 也有 commit——两个仓库的「根 commit」不同，push 会报 <code>fatal: refusing to merge unrelated histories</code>。初学者经常在这里卡住。
 </div>
 
+<div class="callout callout-danger">
+<strong>⚠️ 常见坑：</strong>如果 GitHub 上已有初始 commit（勾了 README），你本地也初始化了 Git——两个仓库的根 commit 不同，push 会报 <code>fatal: refusing to merge unrelated histories</code>。记住：<strong>要么 GitHub 先建，clone 下来改；要么本地先建，GitHub 上空仓接。二者不可混。</strong>
+</div>
 
-<!-- ===== SECTION 7 ===== -->
-<h2 class="section" id="s7">七、操作二：添加 SSH 公钥</h2>
+<!-- ===== S7 ===== -->
+<h2 class="section" id="s7"><span class="num">07</span> 操作二：添加 SSH 公钥</h2>
 
 <p>打开 <code>github.com/settings/keys</code>：</p>
 
+<div class="table-wrap">
 <table>
   <thead><tr><th>你选/填的</th><th>意思</th></tr></thead>
   <tbody>
-    <tr><td><strong>Key type: Authentication Key</strong></td><td>用途是「身份认证」——证明你是谁。GitHub 还支持 Signing Key（给你的 commit 做数字签名，防止别人以你的名义提交），那是进阶用法</td></tr>
-    <tr><td>Title: 我的Windows电脑</td><td>一个标签——以后换电脑或密钥丢了，你能认出「这条是那台旧电脑的密钥」，删掉就行</td></tr>
-    <tr><td>Key: 粘贴公钥内容</td><td>把 <code>~/.ssh/id_ed25519.pub</code> 的内容原样粘贴。GitHub 存下后，任何持有对应私钥的人就能以你的身份操作仓库</td></tr>
+    <tr><td><strong>Key type: Authentication Key</strong></td><td>用途是身份认证。GitHub 还支持 Signing Key——给你的 commit 做数字签名防冒名提交，那是进阶用法</td></tr>
+    <tr><td>Title: 我的Windows电脑</td><td>一个标签。以后换电脑或密钥丢了，你能认出这条是哪个设备的</td></tr>
+    <tr><td>Key: 粘贴公钥内容</td><td>把 <code>~/.ssh/id_ed25519.pub</code> 原样粘贴。GitHub 存下后，任何持有对应私钥的人就能以你的身份操作仓库</td></tr>
   </tbody>
 </table>
+</div>
 
-
-<!-- ===== SECTION 8 ===== -->
-<h2 class="section" id="s8">八、操作三：GitHub Pages — 把 HTML 变成网站</h2>
+<!-- ===== S8 ===== -->
+<h2 class="section" id="s8"><span class="num">08</span> 操作三：GitHub Pages — 把 HTML 变成网站</h2>
 
 <p>打开 <code>github.com/6HOLLIS/yak-meat-report/settings/pages</code>：</p>
 
+<div class="table-wrap">
 <table>
-  <thead><tr><th style="width:35%;">设置</th><th>你的选择</th><th>意思</th></tr></thead>
+  <thead><tr><th style="width:30%;">设置</th><th>你的选择</th><th>意思</th></tr></thead>
   <tbody>
-    <tr><td>Source</td><td>Deploy from a branch</td><td>「从分支部署」——GitHub 直接读取你某个分支上的文件，作为网站发布。另一种方式是 GitHub Actions（自己写部署脚本），功能更强但更复杂</td></tr>
+    <tr><td>Source</td><td>Deploy from a branch</td><td>从分支直接部署——GitHub 读取你分支上的文件当作网站发布</td></tr>
     <tr><td>Branch</td><td><code>master</code></td><td>从哪个分支读文件</td></tr>
-    <tr><td>Folder</td><td><code>/ (root)</code></td><td>从分支的哪个子目录读——选根目录意思是整个仓库都发布。如果选 <code>/docs</code>，就只发布 docs 文件夹里的内容</td></tr>
+    <tr><td>Folder</td><td><code>/ (root)</code></td><td>从哪个子目录读——选根目录即整个仓库都发布</td></tr>
   </tbody>
 </table>
+</div>
 
 <h3>URL 规则</h3>
 
-<pre>https://<span class="arg">{用户名}</span>.github.io/<span class="cmd">{仓库名}</span>/<span class="out">{文件路径}</span>
+<pre>https://<span class="ar">{用户名}</span>.github.io/<span class="kw">{仓库名}</span>/<span class="st">{文件路径}</span></pre>
 
-你的：
-https://<span class="arg">6HOLLIS</span>.github.io/<span class="cmd">yak-meat-report</span>/<span class="out">analysis-report.html</span></pre>
-
-<div class="qa">
-  <div class="qa-q">Pages 和普通网站托管有什么区别？</div>
-  <div class="qa-a">
-    <p>Pages 是<strong>静态网站托管</strong>——只托管 HTML/CSS/JS 文件，没有后端代码，没有数据库，没有服务器端处理。对于你这样的分析报告页面来说完全够用。如果你以后需要动态功能（用户登录、数据存储），就需要更高级的方案（Vercel、Netlify 或自建服务器）。</p>
-  </div>
+<div class="callout callout-insight">
+<strong>Pages 是静态网站托管</strong>——只托管 HTML/CSS/JS 文件，没有后端、没有数据库。对于文档和报告页面完全够用。如果需要动态功能（登录、数据存储），以后可以用 Vercel 或自建服务器。
 </div>
 
+<!-- ===== S9 ===== -->
+<h2 class="section" id="s9"><span class="num">09</span> 自动更新机制：完整传导链条</h2>
 
-<!-- ===== SECTION 9 ===== -->
-<h2 class="section" id="s9">九、自动更新机制：完整传导链条</h2>
+<p>改网站内容的唯一方式：<strong>在你电脑上编辑文件 → 走 Git 流程 → push。</strong></p>
 
-<p>改网站内容的唯一方式：<strong>在你电脑上编辑文件 → 走 Git 流程 → push。</strong>不能直接在 GitHub 网站上改（那会绕过 Git 的工作流）。</p>
+<pre>1. 编辑文件 → 保存 <span class="c1">(Ctrl+S)</span>
+2. <span class="kw">git add -A</span>             <span class="c1">→ 文件进暂存区</span>
+3. <span class="kw">git commit -m</span> <span class="st">"..."</span>    <span class="c1">→ 快照存入本地 .git/objects/</span>
+4. <span class="kw">git push</span>               <span class="c1">→ 快照发送到 GitHub</span>
+                              <span class="c1">→ master 分支 HEAD 指针前移</span>
+5. GitHub 检测到分支变化        <span class="c1">→ 触发 Pages 重新构建</span>
+6. 约 30 秒后 → 网站指向最新版本</pre>
 
-<h3>传导链路</h3>
-
-<pre>1. 你在电脑上编辑 analysis-report.html → 保存 (Ctrl+S)
-2. <span class="cmd">git add -A</span>             → 文件进暂存区
-3. <span class="cmd">git commit -m "..."</span>    → 快照存入本地 .git/objects/
-4. <span class="cmd">git push</span>               → 快照发送到 GitHub 仓库
-                                 master 分支的 HEAD 指针向前移动
-                                    ↓
-5. GitHub 检测到 master 分支发生变化
-                                    ↓
-6. Pages 自动拉取最新文件，重新部署到 Web 服务器
-                                    ↓
-7. https://6hollis.github.io/yak-meat-report/analysis-report.html
-   指向最新版本（约 30 秒延迟）
-</pre>
-
-<div class="insight">
-<strong>关键理解：</strong>Pages 不是监听文件变化——它监听的是<strong>分支指针变化</strong>。你 push 了新 commit，master 分支的指针移到了新 commit，这个事件触发了 Pages 的重新构建。这是一个事件驱动机制，不是轮询。
+<div class="callout callout-note">
+<strong>Pages 不是轮询文件变化——它监听的是分支指针变化。</strong>你 push 了新 commit，master 指针移到新位置，这个事件触发构建。这是一个事件驱动机制。
 </div>
 
-<h3>日常更新就三行命令</h3>
+<h3>日常更新就是三行命令</h3>
 
-<pre><span class="cmd">git add -A</span>
-<span class="cmd">git commit -m</span> <span class="arg">"更新了某某内容"</span>
-<span class="cmd">git push</span></pre>
+<pre><span class="kw">git add -A</span>
+<span class="kw">git commit -m</span> <span class="st">"更新了某某内容"</span>
+<span class="kw">git push</span></pre>
 
-<p>手动的只有前三行。从 push 成功到网站更新，全自动。</p>
+<p>手动的只有前三行。push 之后全自动。</p>
 
+<!-- ===== S10 ===== -->
+<h2 class="section" id="s10"><span class="num">10</span> git status — 看懂每一行输出</h2>
 
-<!-- ===== SECTION 10 ===== -->
-<h2 class="section" id="s10">十、git status — 看懂输出</h2>
+<p>这是你最常跑的命令——随时查看当前状态：</p>
 
-<p>这是你最常跑的命令——随时看看当前什么状态：</p>
+<pre><span class="kw">git status</span>
 
-<pre><span class="cmd">git status</span>
+<span class="st">On branch master</span>                              <span class="c1">← 当前在 master 分支</span>
+<span class="st">Your branch is up to date with 'origin/master'.</span> <span class="c1">← 本地和 GitHub 同步</span>
 
-<span class="out">On branch master</span>
-<span class="cmt">→ 当前在 master 分支</span>
+<span class="am">Untracked files:</span>                                <span class="c1">← Git 发现了不认识的文件</span>
+<span class="am">  .playwright-mcp/</span>                               <span class="c1">← 不在版本管理中</span>
 
-<span class="out">Your branch is up to date with 'origin/master'.</span>
-<span class="cmt">→ 本地和 GitHub 同步，没有未推送的 commit</span>
+<span class="am">nothing added to commit but untracked files present</span>
+                                                  <span class="c1">← 已跟踪文件无改动，但有个新文件夹需要处理</span></pre>
 
-<span class="out">Untracked files:</span>
-<span class="out">  .playwright-mcp/</span>
-<span class="cmt">→ Git 发现一个它不认识的文件夹——不在版本管理中</span>
+<h3>文件的三种追踪状态</h3>
 
-<span class="out">nothing added to commit but untracked files present</span>
-<span class="cmt">→ 已跟踪的文件都没改动，但有一个新文件夹需要你决定怎么处理</span></pre>
-
+<div class="table-wrap">
 <table>
-  <thead><tr><th>文件状态</th><th>含义</th></tr></thead>
+  <thead><tr><th>状态</th><th>含义</th></tr></thead>
   <tbody>
-    <tr><td><strong>Untracked (未跟踪)</strong></td><td>Git 不认识这个文件——既不存档，也不管它。可能是新建的文件还没 add</td></tr>
-    <tr><td><strong>Tracked (已跟踪)</strong></td><td>文件在 Git 管理下。细分三种子状态：</td></tr>
-    <tr><td>&nbsp;&nbsp;Modified</td><td>已修改，尚未 add 到暂存区</td></tr>
-    <tr><td>&nbsp;&nbsp;Staged</td><td>已 add 到暂存区，等 commit</td></tr>
-    <tr><td>&nbsp;&nbsp;Committed</td><td>已存档，干净状态</td></tr>
+    <tr><td><strong>Untracked</strong></td><td>Git 不认识——新建文件尚未 add</td></tr>
+    <tr><td><strong>Modified</strong></td><td>已跟踪，但内容已改动，尚未 add 到暂存区</td></tr>
+    <tr><td><strong>Staged</strong></td><td>已 add 到暂存区，等待 commit</td></tr>
+    <tr><td><strong>Committed</strong></td><td>已存档，干净状态</td></tr>
   </tbody>
 </table>
+</div>
 
 <div class="qa">
-  <div class="qa-q">fatal: not a git repository —— 什么意思？</div>
+  <div class="qa-q">fatal: not a git repository — 什么意思？</div>
   <div class="qa-a">
-    <p>当前目录（及其所有上级目录）中没有 <code>.git</code> 文件夹——不是在仓库里。你需要先 <code>cd</code> 到项目根目录。只有根目录下面有 <code>.git</code>，子目录里也能跑 git 命令（它会自动向上查找 <code>.git</code>）。</p>
+    <p>当前目录（及其所有上级目录）中没有 <code>.git</code> 文件夹——你不在一个仓库里。需要先 <code>cd</code> 到项目根目录。只有根目录下有 <code>.git</code>；在子目录里也能跑 git 命令，它会自动向上查找。</p>
   </div>
 </div>
 
-
-<!-- ===== SECTION 11 ===== -->
-<h2 class="section" id="s11">十一、.gitignore — 告诉 Git「这些不用管」</h2>
+<!-- ===== S11 ===== -->
+<h2 class="section" id="s11"><span class="num">11</span> .gitignore — 告诉 Git「这些不用管」</h2>
 
 <p><code>.gitignore</code> 是一个黑名单文件。写在里面的路径，Git 当它们不存在。</p>
 
-<pre><span class="cmt">.gitignore 示例：</span>
-.playwright-mcp/     <span class="cmt">忽略这个文件夹</span>
-*.tmp                <span class="cmt">忽略所有 .tmp 结尾的文件</span>
-node_modules/        <span class="cmt">忽略依赖包（几万个文件不该上传）</span>
-.env                 <span class="cmt">忽略环境变量文件（含密钥/密码）</span>
-.DS_Store            <span class="cmt">Mac 系统垃圾文件</span></pre>
-
-<table>
-  <thead><tr><th style="width:25%;">常见放进 gitignore</th><th>原因</th></tr></thead>
-  <tbody>
-    <tr><td><code>node_modules/</code></td><td>依赖包——体积巨大且可以从 <code>package.json</code> 重建</td></tr>
-    <tr><td><code>.env</code></td><td>密钥、密码、API Token——<strong>绝对不能</strong>推送到公开仓库</td></tr>
-    <tr><td><code>*.log</code>, <code>*.tmp</code></td><td>临时文件和日志——没有版本管理价值</td></tr>
-    <tr><td><code>dist/</code>, <code>build/</code></td><td>构建产物——可以从源码重新生成</td></tr>
-    <tr><td><code>.DS_Store</code>, <code>Thumbs.db</code></td><td>操作系统生成的垃圾文件</td></tr>
-  </tbody>
-</table>
+<pre><span class="c1">.gitignore 示例：</span>
+<span class="am">.playwright-mcp/</span>     <span class="c1">忽略这个文件夹</span>
+<span class="am">*.tmp</span>                <span class="c1">忽略所有 .tmp 结尾的文件</span>
+<span class="am">node_modules/</span>        <span class="c1">依赖包——几万个文件，不应上传</span>
+<span class="am">.env</span>                 <span class="c1">🔴 密钥/密码——绝对不能推到公开仓库</span></pre>
 
 <div class="qa">
   <div class="qa-q">.gitignore 本身会被推送吗？</div>
   <div class="qa-a">
-    <p><strong>会。</strong><code>.gitignore</code> 本身是一个被 Git 跟踪的普通文件——它列出的路径才被忽略。推送 .gitignore 的意义是：让别人克隆你的仓库时也遵守同样的忽略规则。这是一份「项目规则」，不是「本机设置」。</p>
+    <p><strong>会。</strong><code>.gitignore</code> 本身是一个被 Git 跟踪的普通文件——它<strong>里面列出的路径</strong>才被忽略。推送它意味着让其他 clone 你仓库的人也遵守同样的忽略规则。这是一份「项目规则」，不是「本机设置」。</p>
   </div>
 </div>
 
+<!-- ===== S12 ===== -->
+<h2 class="section" id="s12"><span class="num">12</span> 完整命令速查</h2>
 
-<!-- ===== SECTION 12 ===== -->
-<h2 class="section" id="s12">十二、完整命令速查</h2>
-
+<div class="table-wrap">
 <table>
-  <thead><tr><th>场景</th><th>命令</th></tr></thead>
+  <thead><tr><th style="width:40%;">场景</th><th>命令</th></tr></thead>
   <tbody>
     <tr><td>初始化仓库</td><td><code>git init</code></td></tr>
     <tr><td>看当前状态</td><td><code>git status</code></td></tr>
     <tr><td>所有文件进暂存区</td><td><code>git add -A</code></td></tr>
     <tr><td>存档</td><td><code>git commit -m "留言"</code></td></tr>
     <tr><td>推送到 GitHub</td><td><code>git push</code></td></tr>
-    <tr><td>添加远程仓库地址</td><td><code>git remote add origin {URL}</code></td></tr>
-    <tr><td>查看远程仓库地址</td><td><code>git remote -v</code></td></tr>
+    <tr><td>添加远程地址</td><td><code>git remote add origin {URL}</code></td></tr>
+    <tr><td>查看远程地址</td><td><code>git remote -v</code></td></tr>
     <tr><td>查看提交历史</td><td><code>git log --oneline</code></td></tr>
     <tr><td>查看两版差异</td><td><code>git diff</code></td></tr>
   </tbody>
 </table>
-
-
-<!-- ===== SECTION 13 ===== -->
-<h2 class="section" id="s13">十三、概念词典</h2>
-
-<table>
-  <thead><tr><th style="width:22%;">术语</th><th>定义</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Repository (仓库)</strong></td><td>一个被 Git 管理的项目目录，包含工作文件 + <code>.git</code> 版本历史</td></tr>
-    <tr><td><strong>Commit (提交/快照)</strong></td><td>一次存档操作的结果——包含当时所有文件的完整快照、留言、时间戳、作者、父 commit 指针</td></tr>
-    <tr><td><strong>Branch (分支)</strong></td><td>一条独立的开发线。<code>master</code> 是默认主线。多分支允许同时做多个功能而不互相干扰</td></tr>
-    <tr><td><strong>Remote (远程)</strong></td><td>远程仓库的别名。<code>origin</code> 是默认别名，指向你 clone 或添加的 GitHub URL</td></tr>
-    <tr><td><strong>Clone (克隆)</strong></td><td>把远程仓库完整复制到本地（包括全部版本历史），用 <code>git clone {URL}</code></td></tr>
-    <tr><td><strong>Pull (拉取)</strong></td><td>把远程的新 commit 下载到本地并合并，用 <code>git pull</code>。多人协作时别人 push 了你需要 pull</td></tr>
-    <tr><td><strong>Staging Area (暂存区)</strong></td><td>add 和 commit 之间的中间区域，让你选择性存档</td></tr>
-    <tr><td><strong>HEAD</strong></td><td>一个指针，指向当前所在分支的最新 commit</td></tr>
-    <tr><td><strong>SSH</strong></td><td>Secure Shell 协议，用于加密网络连接和身份认证</td></tr>
-    <tr><td><strong>GitHub Pages</strong></td><td>GitHub 的静态网站托管服务——把仓库里的 HTML 自动变成网站</td></tr>
-  </tbody>
-</table>
-
-<hr style="margin-top:2.5rem;">
-<div class="footer">
-  <p>Git & GitHub 速通笔记 · 2026 年 7 月 · 基于实战操作</p>
-  <p style="margin-top:0.4rem;">
-    <a href="../analysis-report.html">← 返回分析报告</a>
-  </p>
 </div>
 
-</div><!-- /main -->
+<!-- ===== S13 ===== -->
+<h2 class="section" id="s13"><span class="num">13</span> 概念词典</h2>
 
-<!-- ===== SIDEBAR ACTIVE STATE ===== -->
+<div class="def-list">
+<div class="def-item"><strong>Repository</strong><span>仓库——一个被 Git 管理的项目目录，包含工作文件 + <code>.git</code> 版本历史</span></div>
+<div class="def-item"><strong>Commit</strong><span>提交/快照——一次存档操作的结果，含完整文件快照、留言、时间戳、父 commit 指针</span></div>
+<div class="def-item"><strong>Branch</strong><span>分支——一条独立的开发线。<code>master</code> 是默认主线</span></div>
+<div class="def-item"><strong>Remote</strong><span>远程——远程仓库的别名。<code>origin</code> 指向 GitHub URL</span></div>
+<div class="def-item"><strong>Clone</strong><span>克隆——把远程仓库完整复制到本地（包括全部版本历史），用 <code>git clone {URL}</code></span></div>
+<div class="def-item"><strong>Pull</strong><span>拉取——把远程的新 commit 下载到本地并合并，用 <code>git pull</code></span></div>
+<div class="def-item"><strong>Staging Area</strong><span>暂存区——add 和 commit 之间的中间区域，选择性存档</span></div>
+<div class="def-item"><strong>HEAD</strong><span>一个指针，指向当前所在分支的最新 commit</span></div>
+<div class="def-item"><strong>SSH</strong><span>Secure Shell 协议，用于加密网络连接和身份认证</span></div>
+<div class="def-item"><strong>GitHub Pages</strong><span>GitHub 的静态网站托管服务——仓库里的 HTML 自动变成网站</span></div>
+</div>
+
+<div class="footer">
+  <p>Git &amp; GitHub 速通笔记 · 2026 年 7 月 · 基于实战操作</p>
+  <p style="margin-top:0.3rem;"><a href="../analysis-report.html">← 返回分析报告</a></p>
+</div>
+
+</div>
+
 <script>
 (function() {
   const links = document.querySelectorAll('.sidebar a');
@@ -662,7 +778,7 @@ node_modules/        <span class="cmt">忽略依赖包（几万个文件不该�
     links.forEach(a => a.classList.remove('active'));
     if (cur) cur.a.classList.add('active');
   }
-  window.addEventListener('scroll', update);
+  window.addEventListener('scroll', update, { passive: true });
   update();
 })();
 </script>
